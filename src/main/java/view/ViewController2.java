@@ -44,7 +44,6 @@ import javax.swing.table.DefaultTableModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import controller.ModelController;
-import controller.Observer;
 import controller.RequestHandler;
 
 import java.awt.event.MouseAdapter;
@@ -55,7 +54,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import java.awt.Component;
 
-public class ViewController {
+public class ViewController2 {
 
 	private JFrame frame;
 	private JTable movieTable;
@@ -85,28 +84,27 @@ public class ViewController {
 	private JTextField credit;
 	JButton searchTheater,searchMovie;
 	private JTable showTimeTable;
-	private Observer mc;
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ViewController window = new ViewController();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ViewController2 window = new ViewController2();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
-	public ViewController(Observer mc) {
-		this.mc=mc;
+	public ViewController2() {
+		
 		initialize();
 	}
 
@@ -114,12 +112,11 @@ public class ViewController {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
+		RequestHandler request =new RequestHandler();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 652, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		
 		
 		final JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.inactiveCaption);
@@ -127,27 +124,27 @@ public class ViewController {
 		final CardLayout c =new CardLayout(0,0);
 		panel.setLayout(c);
 		
-		HomePanel home = new HomePanel(mc);
+		HomePanel home = new HomePanel(request);
 		panel.add(home, "home");
 
-		BrowseMovie browseMovie = new BrowseMovie(mc);
+		BrowseMovie browseMovie = new BrowseMovie(request);
 		panel.add(browseMovie, "browseMovie");
-		BrowseTheater browseTheater = new BrowseTheater(mc);
+		BrowseTheater browseTheater = new BrowseTheater(request);
 		panel.add(browseTheater, "browseTheater");
 		
-		SeatMap seatMap = new SeatMap(mc);
+		SeatMap seatMap = new SeatMap(request);
 		panel.add(seatMap, "seatMap");
 		
-		RegesterPanel regesterPanel = new RegesterPanel(mc);
+		RegesterPanel regesterPanel = new RegesterPanel();
 		panel.add(regesterPanel, "regester");
 
 		
-		JPanel cancelTicketPanel = new CancelTicket(mc);
+		JPanel cancelTicketPanel = new CancelTicket();
 		panel.add(cancelTicketPanel, "cancelTicket");
-		JPanel cancelMembership = new CancelMemberShip(mc);
+		JPanel cancelMembership = new JPanel();
 		panel.add(cancelMembership, "cancelMembership");
 		
-		JMenuBar menuBar = new MenuBar(mc);
+		JMenuBar menuBar = new MenuBar();
 		frame.getContentPane().add(menuBar, BorderLayout.NORTH);
 		
 //		movieTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
@@ -175,11 +172,19 @@ public class ViewController {
 //	    });
 		c.show(panel, "home");
 		
-		JPanel login = new LoginPanel(mc);
+		JPanel login = new LoginPanel();
 		panel.add(login, "login");
 		
-		JPanel purchase = new PurchasePanel(mc);
+		JPanel purchase = new PurchasePanel();
 		panel.add(purchase, "purchase");
+		browseMovie.setAction(c,panel);
+		browseTheater.setAction(c,panel);
+		browseMovie.setTheater(browseTheater);
+		browseTheater.setMovie(browseMovie);
+		seatMap.setAction(c,panel);
+		seatMap.setTheater(browseTheater);
+		seatMap.setMovie(browseMovie);
+		home.setActions(c,panel);
 		
 		JPanel showTimePanel = new JPanel();
 		showTimePanel.setBackground(SystemColor.inactiveCaption);
@@ -211,21 +216,8 @@ public class ViewController {
 //				c.show(panel, "cancelTicket");
 //			}
 //		});
-		browseMovie.setAction(c,panel);
-		browseTheater.setAction(c,panel);
-//		browseMovie.setTheater(browseTheater);
-//		browseTheater.setMovie(browseMovie);
-		seatMap.setAction(c,panel);
-		seatMap.setTheater(browseTheater);
-		seatMap.setMovie(browseMovie);
-		home.setActions(c,panel);
-		c.show(panel, "home");
-
-		frame.setVisible(true);
-	}
-
-	public void addObserver(Observer mc) {
-		this.mc=mc;
+		
+		
 	}
 	
 }
