@@ -12,31 +12,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
  */
 public class ModelController implements Observer {
-	/**
-	 * Add methods or class to differentiate between requests
-	 * @param request
-	 * @return
-	 */
-	public String requestHandeler(String request) {
-		ObjectMapper mapper=new ObjectMapper();
-		JsonNode node = null;
-		 try {
-			 node = mapper.readTree(request);
-			 System.err.println(node.asText());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		if( node.get("Type").asText().equals("GET"))
-			return "yes";
-		return "NONE";
+	RequestHandler request;
+	 public ModelController(RequestHandler request) {
+		this.request=request;
+		 
+		 
 	}
 
-	public String update(String request) {
-		System.out.println("HERE");
-		return requestHandeler(request);
+	@Override
+	public String sendRequest(String msg) throws IOException {
+		return request.checkRequest(msg);
 	}
+
+
 
 	
 }

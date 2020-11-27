@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 public interface Observer {
-public String update(String request);
+public String sendRequest(String request) throws IOException;
 }

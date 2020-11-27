@@ -742,7 +742,7 @@ public class JDBC {
      * @param row the row
      */
     public void insertIntoTable(String tableName, String[] row){
-        StringBuilder sqlSB = new StringBuilder();
+        StringBuilder sqlSB =  new StringBuilder();
         sqlSB.append("INSERT INTO `" + tableName +"` "+"values(");
         for (int i = 0; i< row.length; i++){
             switch (server.controller.Utils.parseColumn(row[i])){
