@@ -4,7 +4,7 @@ import controller.CinemaController;
 import controller.ModelController;
 import controller.RequestHandler;
 import controller.Response;
-import view.GuiController;
+import view.controllers.GuiController;
 
 public class App {
 
