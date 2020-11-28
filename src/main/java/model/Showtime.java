@@ -1,16 +1,19 @@
-import java.sql.Date;
+package model;
+
 import java.util.*;
 
 public class Showtime{
     private String date;
     private ArrayList<Seat> seats;
+    private int movieId;
+	private int theatreId;
     private Movie movie;
     private Theatre theatre;
 
-    public Showtime(String d, Movie m, Theatre t){
+    public Showtime(String d, int m, int t){
         setDate(d);
-        setMovie(m);
-        setTheatre(t);
+        this.movieId = m;
+        this.theatreId = t;
     }
 
 
@@ -69,5 +72,14 @@ public class Showtime{
     public void setTheatre(Theatre theatre) {
         this.theatre = theatre;
     }
+    
+    public int getMovieId() {
+		return movieId;
+	}
+
+
+	public int getTheatreId() {
+		return theatreId;
+	}
 
 }

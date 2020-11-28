@@ -1,3 +1,16 @@
+package model;
+
 public class RegisteredUser extends User{
-    //TODO:: username /password for login
+    private String username;
+    
+    private String password;
+    
+    
+    public String getUsername() {
+		return username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	
 }
