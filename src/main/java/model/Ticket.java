@@ -2,11 +2,12 @@ import java.sql.Date;
 import java.util.Random;
 
 public class Ticket{
-
+	
     private int ticketId;
     private double price;
     private Seat mySeat;
     private Date issueDate;
+    
 
     SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 
