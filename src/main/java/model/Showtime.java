@@ -16,7 +16,6 @@ public class Showtime{
         this.theatreId = t;
     }
 
-
     /**
      * @return String return the date
      */

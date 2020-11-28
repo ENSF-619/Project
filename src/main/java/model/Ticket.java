@@ -1,7 +1,7 @@
 package model;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime; 
 import java.util.Random;
 
 public class Ticket{
@@ -12,10 +12,13 @@ public class Ticket{
     private String issueDate;
     
 
-    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    
 
     public Ticket(Seat s){
-        setIssueDate(formatter.format(new Date(System.currentTimeMillis())));
+        LocalDateTime now = LocalDateTime.now();
+        String formattedDate = now.format(dtf);
+        setIssueDate(formattedDate);
         setMySeat(s);
         setPrice(14.50);
         setTicketId(generateRandom(5));
@@ -79,12 +82,17 @@ public class Ticket{
     public String getIssueDate() {
         return issueDate;
     }
-
     /**
      * @param issueDate the issueDate to set
      */
     public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
+    @Override
+    public String toString(){
+        String s =getTicketId()+", "+getMySeat()+", "+getPrice()+", "+getIssueDate();
+        return s;
+    }
+
 
 }
