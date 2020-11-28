@@ -1,3 +1,5 @@
+package model;
+
 public class Seat{
     private boolean status;
     private String position;

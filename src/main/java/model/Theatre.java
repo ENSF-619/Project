@@ -1,3 +1,5 @@
+package model;
+
 public class Theatre{
 
     private int theatreId;

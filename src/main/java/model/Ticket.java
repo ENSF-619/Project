@@ -1,4 +1,7 @@
+package model;
+
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 
 public class Ticket{
@@ -6,7 +9,7 @@ public class Ticket{
     private int ticketId;
     private double price;
     private Seat mySeat;
-    private Date issueDate;
+    private String issueDate;
     
 
     SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -73,14 +76,14 @@ public class Ticket{
     /**
      * @return Date return the issueDate
      */
-    public Date getIssueDate() {
+    public String getIssueDate() {
         return issueDate;
     }
 
     /**
      * @param issueDate the issueDate to set
      */
-    public void setIssueDate(Date issueDate) {
+    public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
 
