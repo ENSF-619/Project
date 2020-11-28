@@ -2,6 +2,7 @@ public class Theatre{
 
     private int theatreId;
     private String theatreName;
+    private String adress;
 
     public Theatre(int id, String name){
         setTheatreId(id);
