@@ -16,7 +16,7 @@ public class ShowtimeList {
 		return temp;
 	}
 
-	public ArrayList<Showtime> getShowtimesByTheatre(Movie movie) {
+	public ArrayList<Showtime> getShowtimesByMovie(Movie movie) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
 			if (showtime.getMovie().equals(movie)) {

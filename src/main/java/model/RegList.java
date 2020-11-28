@@ -36,7 +36,15 @@ public class RegList {
     }
 	
 	public void addUser(RegisteredUser user) {
-		registeredUsers.add(user);
+		if(!checkUserName(user.getUsername())){
+			registeredUsers.add(user);
+		}
+	}
+
+	public void removeUser(RegisteredUser user){
+		if(checkUserName(user.getUsername())){
+			registeredUsers.remove(user);
+		}
 	}
 
 }

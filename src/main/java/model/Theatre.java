@@ -4,7 +4,7 @@ public class Theatre{
 
     private int theatreId;
     private String theatreName;
-    private String adress;
+    private String address;
 
     public Theatre(int id, String name){
         setTheatreId(id);
@@ -36,8 +36,30 @@ public class Theatre{
     /**
      * @param theatreName the theatreName to set
      */
-    public void setTheatreName(String theatreName) {
-        this.theatreName = theatreName;
+    public void setTheatreName(String addy) {
+        this.address = addy;
+    }
+
+     /**
+     * @return String return the theatreName
+     */
+    public String getTheatreAddress() {
+        return address;
+    }
+
+    /**
+     * @param theatreName the theatreName to set
+     */
+    public void setTheatreAddress(String addy) {
+        this.address=addy;
+    }
+
+    @Override
+    public String toString(){
+        String s = getTheatreName()+", "+getTheatreAddress();
+
+        return s;
+
     }
 
 }

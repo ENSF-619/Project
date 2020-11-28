@@ -13,4 +13,25 @@ public class TheatreList {
 		}
 		return null;
 	}
+
+	public boolean checkTheatre(Theatre theatre){
+		for(Theatre t:theatres){
+			if(t.getTheatreId() == theatre.getTheatreId()){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void addTheatre(Theatre th){
+		if(!checkTheatre(th)){
+			theatres.add(th);
+		}
+	}
+
+	public void removeTheatre(Theatre th){
+		if(checkTheatre(th)){
+			theatres.remove(th);
+		}
+	}
 }
