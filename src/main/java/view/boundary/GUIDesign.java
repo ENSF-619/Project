@@ -30,13 +30,13 @@ import javax.swing.JList;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.AbstractListModel;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class GUIDesign {
 
 	private JFrame frame;
-	private JTable movieTable;
-	private JTable theaterTable;
-	private JTable showTimeTable;
 	private JTextField ticketID;
 	private JTextField movieName;
 	private JTextField theaterName;
@@ -59,6 +59,10 @@ public class GUIDesign {
 	private JTextField password;
 	private JTextField textField;
 	private JTextField creditNum;
+	private JTextField searchField;
+	private JTextField CCVCancelTicket;
+	private JTextField FnameCancelTicket;
+	private JTextField LnameCancelTicket;
 
 	/**
 	 * Launch the application.
@@ -150,42 +154,36 @@ public class GUIDesign {
 		allTheaterBtn.setBounds(649, 27, 112, 25);
 		browseHeaderPanel.add(allTheaterBtn);
 		
+		searchField = new JTextField();
+		searchField.setBounds(94, 65, 167, 22);
+		browseHeaderPanel.add(searchField);
+		searchField.setColumns(10);
+		
 		JPanel browseTablePanel = new JPanel();
 		browseTablePanel.setPreferredSize(new Dimension(10, 800));
 		browseTablePanel.setMinimumSize(new Dimension(10, 800));
 		splitPane.setRightComponent(browseTablePanel);
-		browseTablePanel.setLayout(new CardLayout(0, 0));
-		
-		JPanel moviePanel = new JPanel();
-		moviePanel.setBackground(SystemColor.inactiveCaption);
-		browseTablePanel.add(moviePanel, "name_296917148335700");
-		moviePanel.setLayout(new BorderLayout(0, 0));
+		browseTablePanel.setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		moviePanel.add(scrollPane, BorderLayout.CENTER);
+		browseTablePanel.add(scrollPane, BorderLayout.CENTER);
 		
-		movieTable = new JTable();
-		scrollPane.setViewportView(movieTable);
-		
-		JPanel theaterPanel = new JPanel();
-		browseTablePanel.add(theaterPanel, "name_297093528154100");
-		theaterPanel.setLayout(new BorderLayout(0, 0));
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		theaterPanel.add(scrollPane_1, BorderLayout.CENTER);
-		
-		theaterTable = new JTable();
-		scrollPane_1.setViewportView(theaterTable);
-		
-		JPanel showTimePanel = new JPanel();
-		panel.add(showTimePanel, "name_297267299186300");
-		showTimePanel.setLayout(new BorderLayout(0, 0));
-		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		showTimePanel.add(scrollPane_2, BorderLayout.CENTER);
-		
-		showTimeTable = new JTable();
-		scrollPane_2.setViewportView(showTimeTable);
+		JList list = new JList();
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+			
+			}
+		});
+		list.setModel(new AbstractListModel() {
+			String[] values = new String[] {"Hello", "you "};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		scrollPane.setViewportView(list);
 		
 		JPanel seatMap = new JPanel();
 		seatMap.setBackground(SystemColor.info);
@@ -834,7 +832,50 @@ public class GUIDesign {
 		cancelTicketPanel.add(creditNum);
 		
 		JButton refundBtn = new JButton("Refund");
-		refundBtn.setBounds(195, 156, 97, 25);
+		refundBtn.setBounds(206, 312, 97, 25);
 		cancelTicketPanel.add(refundBtn);
+		
+		JLabel lblExpiryDate = new JLabel("Expiry Date");
+		lblExpiryDate.setBounds(12, 137, 110, 16);
+		cancelTicketPanel.add(lblExpiryDate);
+		
+		JComboBox month = new JComboBox();
+		month.setModel(new DefaultComboBoxModel(new String[] {"Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
+		month.setSelectedIndex(0);
+		month.setBounds(134, 134, 62, 22);
+		cancelTicketPanel.add(month);
+		
+		JComboBox year = new JComboBox();
+		year.setModel(new DefaultComboBoxModel(new String[] {"Year", "2020", "2021", "2022", "2023"}));
+		year.setSelectedIndex(0);
+		year.setBounds(206, 134, 62, 22);
+		cancelTicketPanel.add(year);
+		
+		JLabel lblCcv_1 = new JLabel("CCV");
+		lblCcv_1.setBounds(12, 180, 110, 16);
+		cancelTicketPanel.add(lblCcv_1);
+		
+		CCVCancelTicket = new JTextField();
+		CCVCancelTicket.setColumns(10);
+		CCVCancelTicket.setBounds(148, 169, 116, 22);
+		cancelTicketPanel.add(CCVCancelTicket);
+		
+		JLabel Fname = new JLabel("First Name");
+		Fname.setBounds(12, 226, 110, 16);
+		cancelTicketPanel.add(Fname);
+		
+		FnameCancelTicket = new JTextField();
+		FnameCancelTicket.setColumns(10);
+		FnameCancelTicket.setBounds(148, 223, 116, 22);
+		cancelTicketPanel.add(FnameCancelTicket);
+		
+		JLabel lblLastName_1 = new JLabel("Last Name");
+		lblLastName_1.setBounds(12, 267, 110, 16);
+		cancelTicketPanel.add(lblLastName_1);
+		
+		LnameCancelTicket = new JTextField();
+		LnameCancelTicket.setColumns(10);
+		LnameCancelTicket.setBounds(148, 264, 116, 22);
+		cancelTicketPanel.add(LnameCancelTicket);
 	}
 }

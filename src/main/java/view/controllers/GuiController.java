@@ -8,7 +8,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.SystemColor;
+import java.util.ArrayList;
 
+import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,42 +25,45 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-import controller.Observer;
+import controller.CinemaController;
 
-public class GuiController {
-	private JFrame frame;
-	private JMenu UserMenu;
+
+public class GuiController implements view.boundary.Observer{
+	
+	 private JFrame frame;
 	private JMenuItem loginItem;
 	private JMenuItem registerItem;
 	private JMenuItem cancelItem;
 	private JMenu newsItem;
 	private JMenu browseItem;
 
-	public GuiController(Observer mc) {
-			frame = new JFrame();
+	public GuiController(CinemaController cc) {
+		 	frame = new JFrame();
 			frame.setBounds(100, 100, 1112, 822);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
+			frame.setResizable(false);
 			JMenuBar menuBar = new JMenuBar();
 			frame.setJMenuBar(menuBar);
 			
-			 UserMenu = new JMenu("Menu");
+			JMenu UserMenu = new JMenu("Menu");
 			menuBar.add(UserMenu);
 			
 			loginItem = new JMenuItem("Login");
 			UserMenu.add(loginItem);
 			
-			 registerItem = new JMenuItem("Register");
+			registerItem = new JMenuItem("Register");
 			UserMenu.add(registerItem);
 			
 			cancelItem = new JMenuItem("Cancel Ticket");
 			UserMenu.add(cancelItem);
 			
-			 newsItem = new JMenu("News");
+			newsItem = new JMenu("News");
 			newsItem.setVisible(false);//TODO:: checks if login is a Regestered USER then it is enabled
 			
-			 browseItem = new JMenu("Browse");
+			browseItem = new JMenu("Browse");
 			menuBar.add(browseItem);
 			menuBar.add(newsItem);
 			frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -99,43 +104,36 @@ public class GuiController {
 			allTheaterBtn.setBounds(649, 27, 112, 25);
 			browseHeaderPanel.add(allTheaterBtn);
 			
+			searchField = new JTextField();
+			searchField.setBounds(94, 65, 167, 22);
+			browseHeaderPanel.add(searchField);
+			searchField.setColumns(10);
+			
 			JPanel browseTablePanel = new JPanel();
 			browseTablePanel.setPreferredSize(new Dimension(10, 800));
 			browseTablePanel.setMinimumSize(new Dimension(10, 800));
 			splitPane.setRightComponent(browseTablePanel);
-			browseTablePanel.setLayout(new CardLayout(0, 0));
-			
-			JPanel moviePanel = new JPanel();
-			moviePanel.setBackground(SystemColor.inactiveCaption);
-			browseTablePanel.add(moviePanel, "name_296917148335700");
-			moviePanel.setLayout(new BorderLayout(0, 0));
+			browseTablePanel.setLayout(new BorderLayout(0, 0));
 			
 			JScrollPane scrollPane = new JScrollPane();
-			moviePanel.add(scrollPane, BorderLayout.CENTER);
+			browseTablePanel.add(scrollPane, BorderLayout.CENTER);
 			
-			movieTable = new JTable();
-			scrollPane.setViewportView(movieTable);
-			
-			JPanel theaterPanel = new JPanel();
-			browseTablePanel.add(theaterPanel, "name_297093528154100");
-			theaterPanel.setLayout(new BorderLayout(0, 0));
-			
-			JScrollPane scrollPane_1 = new JScrollPane();
-			theaterPanel.add(scrollPane_1, BorderLayout.CENTER);
-			
-			theaterTable = new JTable();
-			scrollPane_1.setViewportView(theaterTable);
-			
-			JPanel showTimePanel = new JPanel();
-			panel.add(showTimePanel, "name_297267299186300");
-			showTimePanel.setLayout(new BorderLayout(0, 0));
-			
-			JScrollPane scrollPane_2 = new JScrollPane();
-			showTimePanel.add(scrollPane_2, BorderLayout.CENTER);
-			
-			showTimeTable = new JTable();
-			scrollPane_2.setViewportView(showTimeTable);
-			
+			JList list = new JList();
+			scrollPane.setViewportView(list);
+			list.addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+				
+				}
+			});
+			list.setModel(new AbstractListModel() {
+				String[] values = new String[] {"Hello", "you "};
+				public int getSize() {
+					return values.length;
+				}
+				public Object getElementAt(int index) {
+					return values[index];
+				}
+			});
 			JPanel seatMap = new JPanel();
 			seatMap.setBackground(SystemColor.info);
 			panel.add(seatMap, "name_297321563721300");
@@ -783,9 +781,93 @@ public class GuiController {
 			cancelTicketPanel.add(creditNum);
 			
 			JButton refundBtn = new JButton("Refund");
-			refundBtn.setBounds(195, 156, 97, 25);
+			refundBtn.setBounds(206, 312, 97, 25);
 			cancelTicketPanel.add(refundBtn);
-		
+			
+			JLabel lblExpiryDate = new JLabel("Expiry Date");
+			lblExpiryDate.setBounds(12, 137, 110, 16);
+			cancelTicketPanel.add(lblExpiryDate);
+			
+			JComboBox month = new JComboBox();
+			month.setModel(new DefaultComboBoxModel(new String[] {"Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
+			month.setSelectedIndex(0);
+			month.setBounds(134, 134, 62, 22);
+			cancelTicketPanel.add(month);
+			
+			JComboBox year = new JComboBox();
+			year.setModel(new DefaultComboBoxModel(new String[] {"Year", "2020", "2021", "2022", "2023"}));
+			year.setSelectedIndex(0);
+			year.setBounds(206, 134, 62, 22);
+			cancelTicketPanel.add(year);
+			
+			JLabel lblCcv_1 = new JLabel("CCV");
+			lblCcv_1.setBounds(12, 180, 110, 16);
+			cancelTicketPanel.add(lblCcv_1);
+			
+			CCVCancelTicket = new JTextField();
+			CCVCancelTicket.setColumns(10);
+			CCVCancelTicket.setBounds(148, 169, 116, 22);
+			cancelTicketPanel.add(CCVCancelTicket);
+			
+			JLabel Fname = new JLabel("First Name");
+			Fname.setBounds(12, 226, 110, 16);
+			cancelTicketPanel.add(Fname);
+			
+			FnameCancelTicket = new JTextField();
+			FnameCancelTicket.setColumns(10);
+			FnameCancelTicket.setBounds(148, 223, 116, 22);
+			cancelTicketPanel.add(FnameCancelTicket);
+			
+			JLabel lblLastName_1 = new JLabel("Last Name");
+			lblLastName_1.setBounds(12, 267, 110, 16);
+			cancelTicketPanel.add(lblLastName_1);
+			
+			LnameCancelTicket = new JTextField();
+			LnameCancelTicket.setColumns(10);
+			LnameCancelTicket.setBounds(148, 264, 116, 22);
+			cancelTicketPanel.add(LnameCancelTicket);
+		}
+		 
 	}
+
+	@Override
+	public boolean regUser() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<Object> getMovieSelection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Object> getTheaterSelection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Object> getShowtimeSelection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Object> getSeatSelection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+
+	
 
 }
