@@ -6,6 +6,11 @@ public class RegList {
 
 	ArrayList<RegisteredUser> registeredUsers;
 
+
+	public RegList(ArrayList<RegisteredUser> regUsers){
+		this.registeredUsers = regUsers;
+	}
+
 	public boolean checkUserName(String username) {
     	for (RegisteredUser registeredUser : registeredUsers) {
     		if(registeredUser.getUsername().equals(username)) {

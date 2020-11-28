@@ -1,15 +1,15 @@
 package model;
 
 public class RegisteredUser extends User{
-    private String username;
-    
+    private String username; 
 	private String password;
 	
-	public RegisteredUser(String name, String pass){
+	
+	public RegisteredUser(String name, String pass, String creditCard, String fname, String lname, String postal, String address, String email){
+		super(creditCard, fname, lname, postal, address, email);
 		setUsername(name);
 		setPassword(pass);
 	}
-    
     
     public String getUsername() {
 		return username;

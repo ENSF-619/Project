@@ -34,7 +34,6 @@ public class TicketList {
 			}
 		}
 		return false;
-		
 	}
 	
 	public void addTicket(Ticket ticket) {

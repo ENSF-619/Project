@@ -3,31 +3,52 @@ package model;
 import java.util.*;
 
 public class Showtime{
-    private String date;
+    private String dateTime;
     private ArrayList<Seat> seats;
     private int movieId;
 	private int theatreId;
     private Movie movie;
     private Theatre theatre;
+    private boolean restricted;
 
-    public Showtime(String d, int m, int t){
-        setDate(d);
+    public Showtime(String d, int m, int t, boolean r){
+        setdateTime(d);
         this.movieId = m;
         this.theatreId = t;
+        createSeats();
+        setRestrictedShowtime(r);
+    }
+
+    public void createSeats(){
+        this.seats = new ArrayList<Seat>();
+        for(char i = 'A';i < 'G';  i++) {
+			for(int j = 10; j<20; j++){
+                Seat s = new Seat(Integer.toString(i)+Character.toString(j));
+                seats.add(s);
+            }
+        }
     }
 
     /**
-     * @return String return the date
+     * @return String return the dateTime
      */
-    public String getDate() {
-        return date;
+    public String getdateTime() {
+        return dateTime;
     }
 
     /**
-     * @param date the date to set
+     * @param dateTime the dateTime to set
      */
-    public void setDate(String date) {
-        this.date = date;
+    public void setdateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public boolean getRestricted(){
+        return this.restricted;
+    }
+
+    public void setRestrictedShowtime(boolean res) {
+        this.restricted = res;
     }
 
     /**
