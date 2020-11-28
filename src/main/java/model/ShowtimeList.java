@@ -6,20 +6,24 @@ public class ShowtimeList {
 
 	private ArrayList<Showtime> showtimes;
 
-	public ArrayList<Showtime> getShowtimesByTheatre(Theatre theatre) {
+	public ShowtimeList(ArrayList<Showtime> s){
+		this.showtimes = s;
+	}
+
+	public ArrayList<Showtime> getUnrestrictedShowtimesByTheatre(Theatre theatre) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
-			if (showtime.getTheatre().equals(theatre)) {
+			if (showtime.getTheatre().equals(theatre) && showtime.getRestricted() == false){
 				temp.add(showtime);
 			}
 		}
 		return temp;
 	}
 
-	public ArrayList<Showtime> getShowtimesByMovie(Movie movie) {
+	public ArrayList<Showtime> getUnrestrictedShowtimesByMovie(Movie movie) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
-			if (showtime.getMovie().equals(movie)) {
+			if (showtime.getMovie().equals(movie) && showtime.getRestricted() == false) {
 				temp.add(showtime);
 			}
 		}
@@ -37,5 +41,28 @@ public class ShowtimeList {
 			showtime.setMovie(movies.getMovie(showtime.getMovieId()));
 		}
 	}
+
+
+	public ArrayList<Showtime> getAllShowtimesByTheatre(Theatre theatre) {
+		ArrayList<Showtime> temp = new ArrayList<Showtime>();
+		for (Showtime showtime : showtimes) {
+			if (showtime.getTheatre().equals(theatre)) {
+				temp.add(showtime);
+			}
+		}
+		return temp;
+	}
+
+	public ArrayList<Showtime> getAllShowtimesByMovie(Movie movie) {
+		ArrayList<Showtime> temp = new ArrayList<Showtime>();
+		for (Showtime showtime : showtimes) {
+			if (showtime.getMovie().equals(movie)) {
+				temp.add(showtime);
+			}
+		}
+		return temp;
+	}
+
+
 
 }

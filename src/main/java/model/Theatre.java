@@ -6,9 +6,10 @@ public class Theatre{
     private String theatreName;
     private String address;
 
-    public Theatre(int id, String name){
+    public Theatre(int id, String name, String addy){
         setTheatreId(id);
         setTheatreName(name);
+        this.address = addy;
         
     }
 

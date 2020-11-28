@@ -10,19 +10,20 @@ public class Ticket{
     private double price;
     private Seat mySeat;
     private String issueDate;
+    private Showtime showing;
     
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     
 
-    public Ticket(Seat s){
+    public Ticket(Seat s, Showtime show){
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(dtf);
         setIssueDate(formattedDate);
         setMySeat(s);
         setPrice(14.50);
         setTicketId(generateRandom(5));
-        
+        this.showing = show;
     }
 
     private static int generateRandom(int length) {

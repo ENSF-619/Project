@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class TheatreList {
 	ArrayList<Theatre> theatres;
+
+	public TheatreList(ArrayList<Theatre> tlist){
+		this.theatres = tlist;
+	}
 	
 	public Theatre getTheatre(int id) {
 		for(Theatre theatre : theatres) {
