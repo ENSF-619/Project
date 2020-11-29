@@ -52,12 +52,14 @@ public class TicketList {
 		for (Ticket t : tickets) {
 			Showtime temp = showtimes.getShowtimeById(t.getShowtimeId());
 			t.setShowtime(temp);
-			setSeat(t, temp);
+			setSeats(t, temp);
 		}
 	}
 
-	public void setSeat(Ticket t, Showtime s){
-		t.setMySeat(s.getSeatById(t.getSeatNum()));
+	public void setSeats(Ticket t, Showtime s){
+		Seat seat = s.getSeatById(t.getSeatNum());
+		t.setMySeat(seat);
+		seat.setStatus(false);
 	}
 
 
