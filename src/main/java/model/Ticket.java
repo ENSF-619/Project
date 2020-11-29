@@ -11,6 +11,8 @@ public class Ticket{
     private Seat mySeat;
     private String issueDate;
     private Showtime showing;
+    private int showtimeId;
+    private String seatNum;
     
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -24,6 +26,17 @@ public class Ticket{
         setPrice(14.50);
         setTicketId(generateRandom(5));
         this.showing = show;
+        this.showtimeId = show.getShowTimeId();
+        this.seatNum = mySeat.getPosition();
+
+    }
+
+    public Ticket(int id, double p, String issue, int showId, String seat){
+        this.ticketId = id;
+        this.price =p;
+        this.showtimeId = showId;
+        this.seatNum = seat;
+        this.issueDate = issue;
     }
 
     private static int generateRandom(int length) {
@@ -48,6 +61,12 @@ public class Ticket{
     public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
+
+    public void setSeatNum(String sNum){
+        this.seatNum = sNum;
+        
+    }
+
 
     /**
      * @return double return the price
@@ -77,6 +96,10 @@ public class Ticket{
         this.mySeat = mySeat;
     }
 
+    public String getSeatNum(){
+       return this.seatNum;
+    }
+
     /**
      * @return Date return the issueDate
      */
@@ -89,6 +112,15 @@ public class Ticket{
     public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
+
+    public void setShowtime(Showtime s){
+        this.showing = s;
+    }
+
+    public int getShowtimeId(){
+        return this.showtimeId;
+    }
+
     @Override
     public String toString(){
         String s =getTicketId()+", "+getMySeat()+", "+getPrice()+", "+getIssueDate();

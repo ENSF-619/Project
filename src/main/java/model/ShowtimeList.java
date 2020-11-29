@@ -10,6 +10,17 @@ public class ShowtimeList {
 		this.showtimes = s;
 	}
 
+	public Showtime getShowtimeById(int showId) {
+		for (Showtime showtime : showtimes) {
+			if (showtime.getShowTimeId()==showId) {
+				return showtime;
+			}
+		}
+		return null;
+	}
+
+	
+
 	public ArrayList<Showtime> getUnrestrictedShowtimesByTheatre(Theatre theatre) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
