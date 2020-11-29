@@ -33,6 +33,7 @@ import java.awt.Insets;
 import javax.swing.AbstractListModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.Canvas;
 
 public class GUIDesign {
 
@@ -908,5 +909,14 @@ public class GUIDesign {
 		LnameCancelTicket.setColumns(10);
 		LnameCancelTicket.setBounds(148, 264, 116, 22);
 		cancelTicketPanel.add(LnameCancelTicket);
+		
+		JPanel home = new JPanel();
+		home.setBackground(SystemColor.activeCaption);
+		panel.add(home, "name_510069479194200");
+		home.setLayout(null);
+		
+		Canvas canvas = new Canvas();
+		canvas.setBounds(0, 0, 307, 392);
+		home.add(canvas);
 	}
 }

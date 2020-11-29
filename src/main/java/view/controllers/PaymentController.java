@@ -57,7 +57,6 @@ public class PaymentController implements ActionListener{
 		this.observer=observer;
 		this.showTime=showTime;
 		this.selectedSeats=selectedSeats;
-		System.err.println(selectedSeats.size());
 		this.c=c;
 		this.panel=panel;
 		this.movieName=movieName;
@@ -91,7 +90,6 @@ public class PaymentController implements ActionListener{
 	for(int i=0;i<selectedSeats.size();i++) {
 		sb.append(selectedSeats.get(i).getPosition()+" ");
 		price+=selectedSeats.get(i).getPrice();
-		System.err.println(price);
 	}
 	seatField.setText(sb.toString());
 	if(observer.loginStatus()) {
@@ -100,7 +98,6 @@ public class PaymentController implements ActionListener{
 		lName.setText(temp.getLname());
 		email.setText(temp.getEmail());
 		credit.setText(temp.getCreditCard());
-//		month.setSelectedIndex(temp.get);
 	}
 	
 	total.setText(price+"");
@@ -123,7 +120,9 @@ public class PaymentController implements ActionListener{
 				for (int i=0 ;i<selectedSeats.size();i++) {
 					cc.getHub().getTickets().addTicket(new Ticket (ticketNum,selectedSeats.get(i).getPrice(),new Date(System.currentTimeMillis())+"",showTime.getShowtimeId(),selectedSeats.get(i).getPosition()));
 					showTime.getSeatById(selectedSeats.get(i).getPosition()).setStatus(false);
+				
 				}
+				System.err.println(	cc.getHub().getTickets().toString());
 				JOptionPane.showMessageDialog(null, "Confirmation has been sent to "+email.getText());
 				c.show(panel, "Browse");
 			}
