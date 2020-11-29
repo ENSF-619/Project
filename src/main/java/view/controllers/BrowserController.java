@@ -140,9 +140,21 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 			table = new JTable(model);
 			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			scrollpane.setViewportView(table);
-			table.getSelectionModel().addListSelectionListener(this);
-			tables="Showtime";
 			populateShowTimeTable(showTimeList);}
+			table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+				
+				@Override
+				public void valueChanged(ListSelectionEvent e) {
+					System.err.println("HERER");
+					showtimeID=(int) table.getValueAt(table.getSelectedRow(), 0);
+					System.err.println("HERER");
+					Showtime temp=cc.getHub().getShowtimes().getShowtimeById(showtimeID);
+					SeatMap map =new SeatMap(cc, observer,temp,c,panel);
+					panel.add(map,"SeatMap");
+					c.show(panel, "SeatMap");
+				}
+			});
+			
 		
 		}
 		//TODO traverse over the columns avilable
@@ -150,7 +162,7 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 		//table.getValueAt(table.getSelectedRow(), 0)
 			
 			
-		if (tables.equals("Theatr")) {
+		else if (tables.equals("Theatr")) {
 			if(route==0)
 				{
 				theatrID= (int) table.getValueAt(table.getSelectedRow(), 0);
@@ -159,9 +171,21 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 				table = new JTable(model);
 				table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				scrollpane.setViewportView(table);
-				table.getSelectionModel().addListSelectionListener(this);
-				tables="Showtime";
-				populateShowTimeTable(showTimeList);}
+				populateShowTimeTable(showTimeList);
+				table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+					
+					@Override
+					public void valueChanged(ListSelectionEvent e) {
+						showtimeID=(int) table.getValueAt(table.getSelectedRow(), 0);
+						Showtime temp=cc.getHub().getShowtimes().getShowtimeById(showtimeID);
+						SeatMap map =new SeatMap(cc, observer,temp,c,panel);
+						panel.add(map,"SeatMap");
+						c.show(panel, "SeatMap");
+					}
+				});
+				
+				
+				}
 			if(route==1) {
 				theatrID= (int) table.getValueAt(table.getSelectedRow(), 0);
 				ArrayList<Movie> movieList=cc.getHub().getShowtimes().getAllMovieByTheatre(theatrID,observer.loginStatus());
@@ -172,18 +196,6 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 				table.getSelectionModel().addListSelectionListener(this);
 				tables="Movie";
 				populateMovieTable(movieList);}
-		 if (tables.equals("Showtime"))
-		{
-			 
-			showtimeID=(int) table.getValueAt(table.getSelectedRow(), 0);
-			System.err.println("HERER");
-			Showtime temp=cc.getHub().getShowtimes().getShowtimeById(showtimeID);
-			 System.err.println(temp.getSeats().toString());
-			SeatMap map =new SeatMap(cc, observer,temp,c,panel);
-			panel.add(map,"SeatMap");
-			c.show(panel, "SeatMap");
-			
-		}
 		}}catch (Exception e1) {}}
 
 	@Override
