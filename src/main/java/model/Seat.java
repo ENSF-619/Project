@@ -1,3 +1,5 @@
+package model;
+
 public class Seat{
     private boolean status;
     private String position;
@@ -6,6 +8,11 @@ public class Seat{
     public Seat(boolean s, String spot){
         setPosition(spot);
         setStatus(s);
+    }
+
+    public Seat(String spot){
+        setStatus(false);
+        setPosition(spot);
     }
     /**
      * @return boolean return the status
@@ -33,6 +40,11 @@ public class Seat{
      */
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    @Override
+    public String toString(){
+        return getPosition();
     }
 
 }

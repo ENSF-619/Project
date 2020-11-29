@@ -4,12 +4,21 @@ public class Movie{
 
     private int movieId;
     private String movieName;
+    private String rating;
 
-    public Movie(int id, String name){
+    public Movie(int id, String name, String r){
         setMovieId(id);
         setMovieName(name);
+        setRating(r);
     }
 
+    public void setRating(String r){
+        this.rating = r;
+    }
+
+    public String getRating(){
+        return this.rating;
+    }
 
     /**
      * @return int return the movieId

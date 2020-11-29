@@ -1,31 +1,70 @@
-import java.sql.Date;
+package model;
+
 import java.util.*;
 
 public class Showtime{
-    private String date;
+	private int showtimeId;
+    private String dateTime;
     private ArrayList<Seat> seats;
+    private int movieId;
+	private int theatreId;
     private Movie movie;
     private Theatre theatre;
+    private boolean restricted;
+    
 
-    public Showtime(String d, Movie m, Theatre t){
-        setDate(d);
-        setMovie(m);
-        setTheatre(t);
+    public Showtime(int id, String d, int m, int t, boolean r){
+    	this.showtimeId = id;
+        setdateTime(d);
+        this.movieId = m;
+        this.theatreId = t;
+        createSeats();
+        setRestrictedShowtime(r);
     }
 
+    public void createSeats(){
+        this.seats = new ArrayList<Seat>();
+        for(char i = 'A';i < 'G';  i++) {
+			for(int j = 10; j<20; j++){
+                Seat s = new Seat(Integer.toString(j)+Character.toString(i));
+                seats.add(s);
+            }
+        }
+    }
+
+    public Seat getSeatById(String seatNum) {
+		for (Seat seat : seats) {
+			if (seat.getPosition().equals(seatNum)) {
+				return seat;
+			}
+		}
+		return null;
+	}
 
     /**
-     * @return String return the date
+     * @return String return the dateTime
      */
-    public String getDate() {
-        return date;
+    public String getdateTime() {
+        return dateTime;
+    }
+
+    public int getShowtimeId(){
+        return showtimeId;
     }
 
     /**
-     * @param date the date to set
+     * @param dateTime the dateTime to set
      */
-    public void setDate(String date) {
-        this.date = date;
+    public void setdateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public boolean getRestricted(){
+        return this.restricted;
+    }
+
+    public void setRestrictedShowtime(boolean res) {
+        this.restricted = res;
     }
 
     /**
@@ -69,5 +108,14 @@ public class Showtime{
     public void setTheatre(Theatre theatre) {
         this.theatre = theatre;
     }
+    
+    public int getMovieId() {
+		return movieId;
+	}
+
+
+	public int getTheatreId() {
+		return theatreId;
+	}
 
 }

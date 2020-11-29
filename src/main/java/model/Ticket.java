@@ -1,4 +1,7 @@
-import java.sql.Date;
+package model;
+
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime; 
 import java.util.Random;
 
 public class Ticket{
@@ -6,17 +9,34 @@ public class Ticket{
     private int ticketId;
     private double price;
     private Seat mySeat;
-    private Date issueDate;
+    private String issueDate;
+    private Showtime showing;
+    private int showtimeId;
+    private String seatNum;
     
 
-    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    
 
-    public Ticket(Seat s){
-        setIssueDate(formatter.format(new Date(System.currentTimeMillis())));
+    public Ticket(Seat s, Showtime show){
+        LocalDateTime now = LocalDateTime.now();
+        String formattedDate = now.format(dtf);
+        setIssueDate(formattedDate);
         setMySeat(s);
         setPrice(14.50);
         setTicketId(generateRandom(5));
-        
+        this.showing = show;
+        this.showtimeId = show.getShowtimeId();
+        this.seatNum = mySeat.getPosition();
+
+    }
+
+    public Ticket(int id, double p, String issue, int showId, String seat){
+        this.ticketId = id;
+        this.price =p;
+        this.showtimeId = showId;
+        this.seatNum = seat;
+        this.issueDate = issue;
     }
 
     private static int generateRandom(int length) {
@@ -41,6 +61,12 @@ public class Ticket{
     public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
+
+    public void setSeatNum(String sNum){
+        this.seatNum = sNum;
+        
+    }
+
 
     /**
      * @return double return the price
@@ -70,18 +96,36 @@ public class Ticket{
         this.mySeat = mySeat;
     }
 
-    /**
-     * @return Date return the issueDate
-     */
-    public Date getIssueDate() {
-        return issueDate;
+    public String getSeatNum(){
+       return this.seatNum;
     }
 
     /**
+     * @return Date return the issueDate
+     */
+    public String getIssueDate() {
+        return issueDate;
+    }
+    /**
      * @param issueDate the issueDate to set
      */
-    public void setIssueDate(Date issueDate) {
+    public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
+
+    public void setShowtime(Showtime s){
+        this.showing = s;
+    }
+
+    public int getShowtimeId(){
+        return this.showtimeId;
+    }
+
+    @Override
+    public String toString(){
+        String s =getTicketId()+", "+getMySeat()+", "+getPrice()+", "+getIssueDate();
+        return s;
+    }
+
 
 }
