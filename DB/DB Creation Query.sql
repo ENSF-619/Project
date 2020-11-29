@@ -73,7 +73,7 @@ VALUES
 (10010,	14.50, '2020/11/12 14:00:00', 10004, 'D12');
 
 DROP TABLE IF EXISTS REGISTEREDUSER;
-CREATE TABLE REGISTEREDUSERS (
+CREATE TABLE REGISTEREDUSER (
 	Username VARCHAR(20) not null,
 	FName VARCHAR(20) default null,
     LName VARCHAR(20) default null,
@@ -85,11 +85,11 @@ CREATE TABLE REGISTEREDUSERS (
     primary key (Username)
 );
 
-INSERT INTO REGISTEREDUSERS (Username, FName, LName, CreditCard, Address, Email)
+INSERT INTO REGISTEREDUSER (Username, FName, LName, CreditCard, Address, Email, PostalCode, UserPassword)
 VALUES
-('Dog123', 'Mary', 'Smith', '2032 2212 3545 2345', '2679 Plumber Dr. NW', 'MarySmith@gmail.com'),
-('JoeyMan', 'Joe', 'Joe', '2032 2512 3785 2225', '2321 Drive Dr. NW', 'JoeJoe@gmail.com'),
-('MovieLover', 'Jack', 'White', '2231 2212 3525 2312', '5555 Lane Rd. NE', 'MoviesAreCool@yahoo.ca');
+('Dog123', 'Mary', 'Smith', '2032 2212 3545 2345', '2679 Plumber Dr. NW', 'MarySmith@gmail.com', 'T2N 4T2', 'cats123'),
+('JoeyMan', 'Joe', 'Joe', '2032 2512 3785 2225', '2321 Drive Dr. NW', 'JoeJoe@gmail.com', 'T2N 4T1', 'JoeBlow'),
+('MovieLover', 'Jack', 'White', '2231 2212 3525 2312', '5555 Lane Rd. NE', 'MoviesAreCool@yahoo.ca', 'T4N 4M9','MovieFan');
 
 DROP TABLE IF EXISTS VOUCHER;
 CREATE TABLE VOUCHER (
