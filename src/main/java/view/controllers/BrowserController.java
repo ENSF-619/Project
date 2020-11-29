@@ -156,7 +156,7 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 		{
 			showtimeID=(int) table.getValueAt(table.getSelectedRow(), 0);
 			Showtime temp=cc.getHub().getShowtimes().getShowtimeById(showtimeID);
-			SeatMap map =new SeatMap(cc, observer,temp);
+			SeatMap map =new SeatMap(cc, observer,temp,c,panel);
 			panel.add(map,"SeatMap");
 			c.show(panel, "SeatMap");
 			

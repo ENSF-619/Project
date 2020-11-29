@@ -299,6 +299,13 @@ public class GUIDesign {
 		lblRow_2.setBounds(12, 589, 56, 16);
 		seatMap.add(lblRow_2);
 		
+		JButton select = new JButton("select seats");
+		select.setForeground(SystemColor.controlDkShadow);
+		select.setBackground(SystemColor.activeCaption);
+		select.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		select.setBounds(874, 661, 135, 48);
+		seatMap.add(select);
+		
 		JPanel purchasePanel = new JPanel();
 		purchasePanel.setBackground(SystemColor.inactiveCaption);
 		panel.add(purchasePanel, "name_298720620389100");

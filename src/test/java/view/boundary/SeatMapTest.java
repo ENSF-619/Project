@@ -10,7 +10,7 @@ public class SeatMapTest {
 	public void testSeatMap() {
 		SeatMap map= new SeatMap();
 		for (int i=0;i<map.seats.size();i++) {
-			System.err.println(map.seats.get(i).getName());
+			System.err.println(map.seats.get(i).getText());
 		}
 		fail("Not yet implemented");
 	}
