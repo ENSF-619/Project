@@ -70,6 +70,7 @@ public class SeatController implements ActionListener {
 			System.err.println(showTime.getShowtimeId());
 			PaymentForm form=new PaymentForm(cc,observer,showTime,selectedSeats,c,panel);
 			panel.add(form, "PaymentForm");
+			c.show(panel, "PaymentForm");
 			
 		}
 		

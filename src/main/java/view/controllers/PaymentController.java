@@ -74,7 +74,7 @@ public class PaymentController implements ActionListener{
 		this.ticketID=ticketID;
 		this.theatreAdress=theaterAddress;
 		this.total=total;
-		populateFields();
+		//populateFields();
 	}
 	
 
@@ -90,6 +90,7 @@ public class PaymentController implements ActionListener{
 	for(int i=0;i<selectedSeats.size();i++) {
 		sb.append(selectedSeats.get(i).getPosition()+" ");
 		price+=selectedSeats.get(i).getPrice();
+		System.err.println(price);
 	}
 	seatField.setText(sb.toString());
 	if(observer.loginStatus()) {
