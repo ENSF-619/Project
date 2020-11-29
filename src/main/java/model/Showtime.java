@@ -3,6 +3,7 @@ package model;
 import java.util.*;
 
 public class Showtime{
+	private int showtimeId;
     private String dateTime;
     private ArrayList<Seat> seats;
     private int movieId;
@@ -10,9 +11,10 @@ public class Showtime{
     private Movie movie;
     private Theatre theatre;
     private boolean restricted;
-    private int showTimeId;
+    
 
-    public Showtime(String d, int m, int t, boolean r){
+    public Showtime(int id, String d, int m, int t, boolean r){
+    	this.showtimeId = id;
         setdateTime(d);
         this.movieId = m;
         this.theatreId = t;
@@ -24,7 +26,7 @@ public class Showtime{
         this.seats = new ArrayList<Seat>();
         for(char i = 'A';i < 'G';  i++) {
 			for(int j = 10; j<20; j++){
-                Seat s = new Seat(Integer.toString(i)+Character.toString(j));
+                Seat s = new Seat(Integer.toString(j)+Character.toString(i));
                 seats.add(s);
             }
         }
@@ -46,8 +48,8 @@ public class Showtime{
         return dateTime;
     }
 
-    public int getShowTimeId(){
-        return showTimeId;
+    public int getShowtimeId(){
+        return showtimeId;
     }
 
     /**

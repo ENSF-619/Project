@@ -12,7 +12,7 @@ public class ShowtimeList {
 
 	public Showtime getShowtimeById(int showId) {
 		for (Showtime showtime : showtimes) {
-			if (showtime.getShowTimeId()==showId) {
+			if (showtime.getShowtimeId()==showId) {
 				return showtime;
 			}
 		}
