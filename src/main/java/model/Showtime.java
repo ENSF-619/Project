@@ -28,7 +28,9 @@ public class Showtime{
 			for(int j = 1; j<=4; j++){
                 Seat s = new Seat(Integer.toString(j)+Character.toString(i));
                 s.setStatus(true);
+                s.setPrice(14);
                 seats.add(s);
+                
             }
         }
     }

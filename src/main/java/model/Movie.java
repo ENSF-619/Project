@@ -48,4 +48,13 @@ public class Movie{
         this.movieName = movieName;
     }
 
+	@Override
+	public String toString() {
+		StringBuffer sb =new StringBuffer();
+		sb.append("ID: "+movieId+"\n");
+		sb.append("Name: "+movieName+"\n");
+		sb.append("Rating: "+rating+"\n");
+		return sb.toString();
+	}
+
 }

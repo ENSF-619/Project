@@ -89,7 +89,7 @@ public class Browser extends JPanel{
 		
 		scrollPane.setViewportView(table);
 			
-		controller=new BrowserController(observer,comboBox,searchField,searchBtnBrowsePanel,allMoviesBtn,allTheaterBtn,table,tableModel);
+		controller=new BrowserController(cc,observer,comboBox,searchField,searchBtnBrowsePanel,allMoviesBtn,allTheaterBtn,table,tableModel);
 	}
 
 	public void setC(CardLayout c) {

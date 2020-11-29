@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.CinemaController;
+import model.Seat;
 import model.Showtime;
 import view.controllers.PaymentController;
 
@@ -33,8 +34,11 @@ private JComboBox monthComboBox;
 private JComboBox yearComboBox;
 private JTextField CCV;
 private JButton purchaseBtn;
+private PaymentController controller;
+private JTextField theatreAddress;
+private JTextField total;
 
-public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, ArrayList<String> selectedSeats, CardLayout c, JPanel panel) {
+public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, ArrayList<Seat> selectedSeats, CardLayout c, JPanel panel) {
 	setBackground(SystemColor.inactiveCaption);
 	
 	GridBagLayout gbl_purchasePanel = new GridBagLayout();
@@ -280,6 +284,16 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	gbc_CCV.gridy = 17;
 	add(CCV, gbc_CCV);
 	
+	theatreAddress = new JTextField();
+	theatreAddress.setEditable(false);
+	theatreAddress.setColumns(10);
+	GridBagConstraints gbc_theatreAddress = new GridBagConstraints();
+	gbc_theatreAddress.anchor = GridBagConstraints.WEST;
+	gbc_theatreAddress.insets = new Insets(0, 0, 5, 5);
+	gbc_theatreAddress.gridx = 3;
+	gbc_theatreAddress.gridy = 4;
+	add(theatreAddress, gbc_theatreAddress);
+	
 	 purchaseBtn = new JButton("Purchase");
 	GridBagConstraints gbc_purchaseBtn = new GridBagConstraints();
 	gbc_purchaseBtn.insets = new Insets(0, 0, 0, 5);
@@ -289,6 +303,31 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	gbc_purchaseBtn.gridy = 19;
 	add(purchaseBtn, gbc_purchaseBtn);
 	
-	PaymentController controller=new 
+
+	JLabel lblTotal = new JLabel("Total");
+	GridBagConstraints gbc_lblTotal = new GridBagConstraints();
+	gbc_lblTotal.anchor = GridBagConstraints.WEST;
+	gbc_lblTotal.insets = new Insets(0, 0, 5, 5);
+	gbc_lblTotal.gridx = 0;
+	gbc_lblTotal.gridy = 8;
+	add(lblTotal, gbc_lblTotal);
+	
+	total = new JTextField();
+	total.setColumns(10);
+	GridBagConstraints gbc_total = new GridBagConstraints();
+	gbc_total.anchor = GridBagConstraints.WEST;
+	gbc_total.insets = new Insets(0, 0, 5, 5);
+	gbc_total.gridx = 3;
+	gbc_total.gridy = 8;
+	add(total, gbc_total);
+	
+	controller=new PaymentController(cc,observer,showTime,selectedSeats,c,panel,ticketID
+			,movieName,theaterName,theatreAddress,showTimeField,seatSelected,firstName,lastName,Email,creditCardNum,monthComboBox,
+			yearComboBox,CCV,purchaseBtn,total);
+	
+	purchaseBtn.addActionListener(controller);
 }
+
+	
+	
 }

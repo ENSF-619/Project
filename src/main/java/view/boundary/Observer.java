@@ -7,4 +7,6 @@ public interface Observer {
 	public void setStatus (boolean status);
 	public void setRegUserName(String userName);
 	public String getUserName();
+	public void setRegPassword(String password);
+	public String getPassword();
 }

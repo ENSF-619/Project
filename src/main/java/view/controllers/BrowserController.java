@@ -50,8 +50,9 @@ public class BrowserController implements ActionListener,ListSelectionListener {
 	
 	
 	
-	public BrowserController(Observer observer, JComboBox comboBox, JTextField searchField, JButton searchBtnBrowsePanel,
+	public BrowserController(CinemaController cc, Observer observer, JComboBox comboBox, JTextField searchField, JButton searchBtnBrowsePanel,
 			JButton allMoviesBtn, JButton allTheaterBtn, JTable table, DefaultTableModel model) {
+	this.cc=cc;
 	this.observer=observer;
 	this.comboBox=comboBox;
 	this.searchField=searchField;
@@ -204,4 +205,4 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 		
 	}
 
-}
+

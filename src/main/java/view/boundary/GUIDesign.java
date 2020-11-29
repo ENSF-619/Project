@@ -64,6 +64,8 @@ public class GUIDesign {
 	private JTextField FnameCancelTicket;
 	private JTextField LnameCancelTicket;
 	private JTable table;
+	private JTextField theatreAddress;
+	private JTextField total;
 
 	/**
 	 * Launch the application.
@@ -312,7 +314,7 @@ public class GUIDesign {
 		GridBagLayout gbl_purchasePanel = new GridBagLayout();
 		gbl_purchasePanel.columnWidths = new int[]{56, 12, 3, 84, 57, 283, 195, 0};
 		gbl_purchasePanel.rowHeights = new int[]{36, 22, 22, 22, 44, 22, 44, 22, 41, 36, 22, 22, 33, 22, 39, 22, 22, 25, 0, 0, 0};
-		gbl_purchasePanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_purchasePanel.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_purchasePanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		purchasePanel.setLayout(gbl_purchasePanel);
 		
@@ -385,6 +387,23 @@ public class GUIDesign {
 		gbc_theaterName.gridy = 3;
 		purchasePanel.add(theaterName, gbc_theaterName);
 		
+		JLabel lblTheatreAddress = new JLabel("Theatre Address");
+		GridBagConstraints gbc_lblTheatreAddress = new GridBagConstraints();
+		gbc_lblTheatreAddress.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTheatreAddress.gridx = 0;
+		gbc_lblTheatreAddress.gridy = 4;
+		purchasePanel.add(lblTheatreAddress, gbc_lblTheatreAddress);
+		
+		theatreAddress = new JTextField();
+		theatreAddress.setEditable(false);
+		theatreAddress.setColumns(10);
+		GridBagConstraints gbc_theatreAddress = new GridBagConstraints();
+		gbc_theatreAddress.anchor = GridBagConstraints.WEST;
+		gbc_theatreAddress.insets = new Insets(0, 0, 5, 5);
+		gbc_theatreAddress.gridx = 3;
+		gbc_theatreAddress.gridy = 4;
+		purchasePanel.add(theatreAddress, gbc_theatreAddress);
+		
 		JLabel lblNewLabel_4 = new JLabel("ShowTime");
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.fill = GridBagConstraints.HORIZONTAL;
@@ -417,12 +436,30 @@ public class GUIDesign {
 		seatSelected.setEditable(false);
 		seatSelected.setColumns(10);
 		GridBagConstraints gbc_seatSelected = new GridBagConstraints();
-		gbc_seatSelected.anchor = GridBagConstraints.NORTHWEST;
+		gbc_seatSelected.fill = GridBagConstraints.HORIZONTAL;
+		gbc_seatSelected.anchor = GridBagConstraints.NORTH;
 		gbc_seatSelected.insets = new Insets(0, 0, 5, 5);
 		gbc_seatSelected.gridwidth = 2;
 		gbc_seatSelected.gridx = 3;
 		gbc_seatSelected.gridy = 7;
 		purchasePanel.add(seatSelected, gbc_seatSelected);
+		
+		JLabel lblTotal = new JLabel("Total");
+		GridBagConstraints gbc_lblTotal = new GridBagConstraints();
+		gbc_lblTotal.anchor = GridBagConstraints.WEST;
+		gbc_lblTotal.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTotal.gridx = 0;
+		gbc_lblTotal.gridy = 8;
+		purchasePanel.add(lblTotal, gbc_lblTotal);
+		
+		total = new JTextField();
+		total.setColumns(10);
+		GridBagConstraints gbc_total = new GridBagConstraints();
+		gbc_total.anchor = GridBagConstraints.WEST;
+		gbc_total.insets = new Insets(0, 0, 5, 5);
+		gbc_total.gridx = 3;
+		gbc_total.gridy = 8;
+		purchasePanel.add(total, gbc_total);
 		
 		JLabel lblPaymentInfo = new JLabel("Payment Info");
 		lblPaymentInfo.setFont(new Font("Tahoma", Font.PLAIN, 22));
