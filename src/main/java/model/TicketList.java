@@ -46,8 +46,20 @@ public class TicketList {
 		if(checkTicket(ticket)){
 			tickets.remove(ticket);
 		}
-
 	}
+
+	public void setShowtime(ShowtimeList showings) {
+		for (Ticket t : tickets) {
+			Showtime temp = showings.getShowtimeById(t.getShowtimeId());
+			t.setShowtime(temp);
+			setSeat(t, temp);
+		}
+	}
+
+	public void setSeat(Ticket t, Showtime s){
+		t.setMySeat(s.getSeatById(t.getSeatNum()));
+	}
+
 
 	public String toString(){
 		String s="";

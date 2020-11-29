@@ -10,6 +10,7 @@ public class Showtime{
     private Movie movie;
     private Theatre theatre;
     private boolean restricted;
+    private int showTimeId;
 
     public Showtime(String d, int m, int t, boolean r){
         setdateTime(d);
@@ -29,11 +30,24 @@ public class Showtime{
         }
     }
 
+    public Seat getSeatById(String seatNum) {
+		for (Seat seat : seats) {
+			if (seat.getPosition().equals(seatNum)) {
+				return seat;
+			}
+		}
+		return null;
+	}
+
     /**
      * @return String return the dateTime
      */
     public String getdateTime() {
         return dateTime;
+    }
+
+    public int getShowTimeId(){
+        return showTimeId;
     }
 
     /**
