@@ -35,6 +35,7 @@ public class SeatController implements ActionListener {
 	this.c=c;
 	this.panel=panel;
 	allSeats=showTime.getSeats();
+	selectedSeats=new ArrayList<Seat>();
 	availableSeats();
 	}
 	/**
@@ -45,9 +46,9 @@ public class SeatController implements ActionListener {
 		for(int i=0; i<allSeats.size();i++) {
 			String position=allSeats.get(i).getPosition();
 			boolean status=allSeats.get(i).isStatus();
-			for(int j=0; i<seats.size();i++) {
-				if(seats.get(i).getName().equals(position)) {
-					seats.get(i).setVisible(status);
+			for(int j=0; j<seats.size();j++) {
+				if(seats.get(j).getName().equals(position)) {
+					seats.get(j).setVisible(status);
 				}
 				
 			}
@@ -62,8 +63,10 @@ public class SeatController implements ActionListener {
 				String position=seats.get(i).getName();
 
 				for(int j=0; j<allSeats.size();j++) {
-					if(allSeats.get(i).getPosition().equals(position)) {
-						selectedSeats.add(allSeats.get(i));
+					if(allSeats.get(j).getPosition().equals(position)) {
+					
+						selectedSeats.add(allSeats.get(j));
+						System.err.println(allSeats.get(j).toString());
 			}}
 		}}
 		if (e.getSource()==select) {

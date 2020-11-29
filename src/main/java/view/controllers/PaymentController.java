@@ -46,7 +46,7 @@ public class PaymentController implements ActionListener{
 	private JTextField theatreAdress;
 	private JTextField total;
 
-	public PaymentController(CinemaController cc, Observer observer, Showtime showTime, ArrayList<Seat> selectedSeats2,
+	public PaymentController(CinemaController cc, Observer observer, Showtime showTime, ArrayList<Seat> selectedSeats,
 			CardLayout c, JPanel panel, JTextField ticketID, JTextField movieName, JTextField theaterName,JTextField theaterAddress, JTextField showTimeField,
 			JTextField seatSelected, JTextField firstName, JTextField lastName, JTextField email,
 			JTextField creditCardNum, JComboBox monthComboBox, JComboBox yearComboBox, JTextField CCV,
@@ -56,7 +56,8 @@ public class PaymentController implements ActionListener{
 		this.cc=cc;
 		this.observer=observer;
 		this.showTime=showTime;
-		this.selectedSeats=selectedSeats2;
+		this.selectedSeats=selectedSeats;
+		System.err.println(selectedSeats.size());
 		this.c=c;
 		this.panel=panel;
 		this.movieName=movieName;
@@ -74,7 +75,7 @@ public class PaymentController implements ActionListener{
 		this.ticketID=ticketID;
 		this.theatreAdress=theaterAddress;
 		this.total=total;
-		//populateFields();
+		populateFields();
 	}
 	
 

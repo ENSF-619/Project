@@ -183,6 +183,7 @@ public SeatMap(CinemaController cc, Observer observer, Showtime showTime, CardLa
 	JButton A4 = new JButton("A");
 	A4.setBounds(105, 575, 68, 48);
 	A4.setName("4A");
+	add(A4);
 	seats.add(A4);
 	
 	JLabel lblRow_2 = new JLabel("Row 4");
