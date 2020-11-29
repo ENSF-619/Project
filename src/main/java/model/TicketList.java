@@ -48,9 +48,9 @@ public class TicketList {
 		}
 	}
 
-	public void setShowtime(ShowtimeList showings) {
+	public void setShowtimes(ShowtimeList showtimes) {
 		for (Ticket t : tickets) {
-			Showtime temp = showings.getShowtimeById(t.getShowtimeId());
+			Showtime temp = showtimes.getShowtimeById(t.getShowtimeId());
 			t.setShowtime(temp);
 			setSeat(t, temp);
 		}

@@ -11,7 +11,11 @@ public class Voucher {
     public Voucher(double ammount) {
         setVoucherAmmount(ammount);
         setVoucherId(generateRandom(4));
-
+    }
+    
+    public Voucher(int id, double ammount) {
+        setVoucherAmmount(ammount);
+        this.voucherId = id;
     }
 
     private static int generateRandom(int length) {

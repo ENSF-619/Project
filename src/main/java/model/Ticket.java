@@ -26,7 +26,7 @@ public class Ticket{
         setPrice(14.50);
         setTicketId(generateRandom(5));
         this.showing = show;
-        this.showtimeId = show.getShowTimeId();
+        this.showtimeId = show.getShowtimeId();
         this.seatNum = mySeat.getPosition();
 
     }
