@@ -1,4 +1,4 @@
-USE sql937864;
+USE sql9378764;
 
 DROP TABLE IF EXISTS MOVIE;
 CREATE TABLE MOVIE (
@@ -16,10 +16,10 @@ VALUES
 
 DROP TABLE IF EXISTS THEATRE;
 CREATE TABLE THEATRE (
-	TheatreId	int not null,
+	TheatreId	int NOT NULL,
     TheatreName VARCHAR(20),
 	Address VARCHAR(30),
-	primary key (ShowtimeId)
+	primary key (TheatreId)
 );
 
 INSERT INTO THEATRE (TheatreId, TheatreName, Address)
@@ -74,18 +74,18 @@ VALUES
 
 DROP TABLE IF EXISTS REGISTEREDUSER;
 CREATE TABLE REGISTEREDUSERS (
-	Username VARCHAR(20),
-	FName VARCHAR(20),
-    LName VARCHAR(20),
-    CreditCard VARCHAR(20),
-    Address VARCHAR(20),
-    PostalCode VARCHAR(20),
-    Email VARCHAR(20),
-	Password VARCHAR(20),
+	Username VARCHAR(20) not null,
+	FName VARCHAR(20) default null,
+    LName VARCHAR(20) default null,
+    CreditCard VARCHAR(20) default null,
+    Address VARCHAR(20) default null,
+    PostalCode VARCHAR(20) default null,
+    Email VARCHAR(20) default null,
+	UserPassword  VARCHAR(20) default null,
     primary key (Username)
 );
 
-INSERT INTO REGISTEREDUSER (Username, FName, LName, CreditCard, Address, PostalCode, Email)
+INSERT INTO REGISTEREDUSERS (Username, FName, LName, CreditCard, Address, Email)
 VALUES
 ('Dog123', 'Mary', 'Smith', '2032 2212 3545 2345', '2679 Plumber Dr. NW', 'MarySmith@gmail.com'),
 ('JoeyMan', 'Joe', 'Joe', '2032 2512 3785 2225', '2321 Drive Dr. NW', 'JoeJoe@gmail.com'),
