@@ -63,6 +63,7 @@ public class GUIDesign {
 	private JTextField CCVCancelTicket;
 	private JTextField FnameCancelTicket;
 	private JTextField LnameCancelTicket;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -168,22 +169,8 @@ public class GUIDesign {
 		JScrollPane scrollPane = new JScrollPane();
 		browseTablePanel.add(scrollPane, BorderLayout.CENTER);
 		
-		JList list = new JList();
-		list.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-			
-			}
-		});
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Hello", "you "};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		scrollPane.setViewportView(list);
+		table = new JTable();
+		scrollPane.setViewportView(table);
 		
 		JPanel seatMap = new JPanel();
 		seatMap.setBackground(SystemColor.info);

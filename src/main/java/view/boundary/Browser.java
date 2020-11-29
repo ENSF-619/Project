@@ -13,9 +13,12 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import controller.CinemaController;
 import view.controllers.BrowserController;
@@ -31,8 +34,10 @@ public class Browser extends JPanel{
 	private CardLayout c;
 	private JPanel panel;
 	private BrowserController controller;
+	private JTable table;
+	private DefaultTableModel tableModel;
 
-	public Browser(CinemaController cc) {
+	public Browser(CinemaController cc,Observer observer) {
 		setLayout(new BorderLayout(0, 0));
 		
 		JSplitPane splitPane = new JSplitPane();
@@ -76,36 +81,30 @@ public class Browser extends JPanel{
 		
 		JScrollPane scrollPane = new JScrollPane();
 		browseTablePanel.add(scrollPane, BorderLayout.CENTER);
+		tableModel=new DefaultTableModel();
+		table = new JTable(tableModel);
 		
-		list = new JList();
-		scrollPane.setViewportView(list);
 		
-		
-		list.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
+		scrollPane.setViewportView(table);
 			
-			}
-		});
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Hello", "you "};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		controller=new BrowserController(observer,comboBox,searchField,searchBtnBrowsePanel,allMoviesBtn,allTheaterBtn,table,tableModel);
 	}
 
 	public void setC(CardLayout c) {
-		this.controller.
+		this.controller.setC(c);
 	}
 
 	public void setPanel(JPanel panel) {
-		this.panel = panel;
+		this.controller.setPanel(panel);
 	}
 
-	public void set() {
+	public void setActions() {
+		comboBox.addActionListener(controller);
+		searchBtnBrowsePanel.addActionListener(controller);
+		allMoviesBtn.addActionListener(controller);
+		allTheaterBtn.addActionListener(controller);
+		list.addListSelectionListener(controller);
+		
 		
 	}
 	

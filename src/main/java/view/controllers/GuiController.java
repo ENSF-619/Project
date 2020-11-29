@@ -29,6 +29,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import controller.CinemaController;
+import view.boundary.Browser;
 
 
 public class GuiController implements view.boundary.Observer{
@@ -39,6 +40,7 @@ public class GuiController implements view.boundary.Observer{
 	private JMenuItem cancelItem;
 	private JMenu newsItem;
 	private JMenu browseItem;
+	private Browser browsePanel;
 
 	public GuiController(CinemaController cc) {
 		 	frame = new JFrame();
@@ -72,68 +74,10 @@ public class GuiController implements view.boundary.Observer{
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
 			panel.setLayout(new CardLayout(0, 0));
 			
-			JPanel browsePanel = new JPanel();
-			panel.add(browsePanel, "name_296081296350700");
+			 browsePanel = new Browser(cc, this);
+			panel.add(browsePanel, "Browse");
 			browsePanel.setLayout(new BorderLayout(0, 0));
 			
-			JSplitPane splitPane = new JSplitPane();
-			splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-			browsePanel.add(splitPane, BorderLayout.CENTER);
-			
-			JPanel browseHeaderPanel = new JPanel();
-			browseHeaderPanel.setBackground(SystemColor.activeCaption);
-			browseHeaderPanel.setPreferredSize(new Dimension(10, 100));
-			browseHeaderPanel.setMinimumSize(new Dimension(100, 100));
-			splitPane.setLeftComponent(browseHeaderPanel);
-			browseHeaderPanel.setLayout(null);
-			
-			JComboBox comboBox = new JComboBox();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Search by Movie", "Search by Theater"}));
-			comboBox.setBounds(94, 28, 167, 22);
-			browseHeaderPanel.add(comboBox);
-			
-			JButton searchBtnBrowsePanel = new JButton("Search");
-			searchBtnBrowsePanel.setBounds(305, 27, 97, 25);
-			browseHeaderPanel.add(searchBtnBrowsePanel);
-			
-			JButton allMoviesBtn = new JButton("All Movies");
-			allMoviesBtn.setBounds(498, 27, 112, 25);
-			browseHeaderPanel.add(allMoviesBtn);
-			
-			JButton allTheaterBtn = new JButton("All Theaters");
-			allTheaterBtn.setBounds(649, 27, 112, 25);
-			browseHeaderPanel.add(allTheaterBtn);
-			
-			searchField = new JTextField();
-			searchField.setBounds(94, 65, 167, 22);
-			browseHeaderPanel.add(searchField);
-			searchField.setColumns(10);
-			
-			JPanel browseTablePanel = new JPanel();
-			browseTablePanel.setPreferredSize(new Dimension(10, 800));
-			browseTablePanel.setMinimumSize(new Dimension(10, 800));
-			splitPane.setRightComponent(browseTablePanel);
-			browseTablePanel.setLayout(new BorderLayout(0, 0));
-			
-			JScrollPane scrollPane = new JScrollPane();
-			browseTablePanel.add(scrollPane, BorderLayout.CENTER);
-			
-			JList list = new JList();
-			scrollPane.setViewportView(list);
-			list.addListSelectionListener(new ListSelectionListener() {
-				public void valueChanged(ListSelectionEvent e) {
-				
-				}
-			});
-			list.setModel(new AbstractListModel() {
-				String[] values = new String[] {"Hello", "you "};
-				public int getSize() {
-					return values.length;
-				}
-				public Object getElementAt(int index) {
-					return values[index];
-				}
-			});
 			JPanel seatMap = new JPanel();
 			seatMap.setBackground(SystemColor.info);
 			panel.add(seatMap, "name_297321563721300");
