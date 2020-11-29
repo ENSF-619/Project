@@ -1,5 +1,6 @@
 package view.boundary;
 
+import java.awt.CardLayout;
 import java.awt.SystemColor;
 
 import javax.swing.JButton;
@@ -8,10 +9,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.CinemaController;
+import view.controllers.LoginController;
 
 public class LoginForm extends JPanel {
 
-	
+	LoginController controller;
+	private JTextField userName;
+	private JTextField password;
+	private JButton loginBtn;
 	public LoginForm(CinemaController cc, Observer observer) {
 		setBackground(SystemColor.inactiveCaption);
 		setLayout(null);
@@ -20,7 +25,7 @@ public class LoginForm extends JPanel {
 		lblNewLabel_7.setBounds(266, 144, 107, 16);
 		add(lblNewLabel_7);
 		
-		JTextField userName = new JTextField();
+		 userName = new JTextField();
 		userName.setBounds(385, 141, 116, 22);
 		add(userName);
 		userName.setColumns(10);
@@ -29,13 +34,27 @@ public class LoginForm extends JPanel {
 		lblPassword.setBounds(266, 189, 107, 16);
 		add(lblPassword);
 		
-		JTextField password = new JTextField();
+		 password = new JTextField();
 		password.setColumns(10);
 		password.setBounds(385, 186, 116, 22);
 		add(password);
 		
-		JButton loginBtn = new JButton("Login");
+		loginBtn = new JButton("Login");
 		loginBtn.setBounds(353, 254, 97, 25);
 		add(loginBtn);
+		controller=new LoginController(cc,observer,userName,password,loginBtn);
+	}
+	public void setC(CardLayout c) {
+		this.controller.setC(c);
+	}
+
+	public void setPanel(JPanel panel) {
+		this.controller.setPanel(panel);
+	}
+
+	public void setActions() {
+		loginBtn.addActionListener(controller);
+		
+		
 	}
 }

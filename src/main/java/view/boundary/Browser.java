@@ -82,14 +82,9 @@ public class Browser extends JPanel{
 		
 		JScrollPane scrollPane = new JScrollPane();
 		browseTablePanel.add(scrollPane, BorderLayout.CENTER);
-		tableModel=new DefaultTableModel();
-		table = new JTable(tableModel);
 		
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
-		scrollPane.setViewportView(table);
 			
-		controller=new BrowserController(cc,observer,comboBox,searchField,searchBtnBrowsePanel,allMoviesBtn,allTheaterBtn,table,tableModel);
+		controller=new BrowserController(cc,observer,comboBox,searchField,searchBtnBrowsePanel,allMoviesBtn,allTheaterBtn,table,tableModel,scrollPane);
 	}
 
 	public void setC(CardLayout c) {
@@ -105,7 +100,6 @@ public class Browser extends JPanel{
 		searchBtnBrowsePanel.addActionListener(controller);
 		allMoviesBtn.addActionListener(controller);
 		allTheaterBtn.addActionListener(controller);
-		table.getSelectionModel().addListSelectionListener(controller);
 		
 		
 	}

@@ -7,8 +7,8 @@ public class Theatre{
     private String address;
 
     public Theatre(int id, String name, String addy){
-        setTheatreId(id);
-        setTheatreName(name);
+      this.theatreId=id;
+      this.theatreName=name;
         this.address = addy;
         
     }
