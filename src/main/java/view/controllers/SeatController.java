@@ -64,14 +64,15 @@ public class SeatController implements ActionListener {
 				for(int j=0; j<allSeats.size();j++) {
 					if(allSeats.get(i).getPosition().equals(position)) {
 						selectedSeats.add(allSeats.get(i));
-			}
-		}
+			}}
+		}}
 		if (e.getSource()==select) {
+			System.err.println(showTime.getShowtimeId());
 			PaymentForm form=new PaymentForm(cc,observer,showTime,selectedSeats,c,panel);
 			panel.add(form, "PaymentForm");
 			
 		}
 		
-	}
+	
 
-}}}
+}}
