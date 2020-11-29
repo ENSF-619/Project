@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -84,6 +85,7 @@ public class Browser extends JPanel{
 		tableModel=new DefaultTableModel();
 		table = new JTable(tableModel);
 		
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		scrollPane.setViewportView(table);
 			
@@ -103,7 +105,7 @@ public class Browser extends JPanel{
 		searchBtnBrowsePanel.addActionListener(controller);
 		allMoviesBtn.addActionListener(controller);
 		allTheaterBtn.addActionListener(controller);
-		list.addListSelectionListener(controller);
+		table.getSelectionModel().addListSelectionListener(controller);
 		
 		
 	}

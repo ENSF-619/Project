@@ -9,10 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.CinemaController;
+import model.Showtime;
 
 public class SeatMap extends JPanel{
 	ArrayList <JButton> seats;
-public SeatMap(CinemaController cc, Observer observer) {
+public SeatMap() {
 	seats=new ArrayList<JButton>();
 	setLayout(null);
 	
@@ -24,6 +25,7 @@ public SeatMap(CinemaController cc, Observer observer) {
 	JButton A1 = new JButton("A");
 	A1.setIcon(null);
 	A1.setBounds(105, 85, 68, 48);
+	A1.setName("1A");
 	add(A1);
 	seats.add(A1);
 	

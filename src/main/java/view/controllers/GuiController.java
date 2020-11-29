@@ -41,6 +41,7 @@ public class GuiController implements view.boundary.Observer{
 	private JMenu newsItem;
 	private JMenu browseItem;
 	private Browser browsePanel;
+	private boolean regUser;
 
 	public GuiController(CinemaController cc) {
 		 	frame = new JFrame();
@@ -77,133 +78,6 @@ public class GuiController implements view.boundary.Observer{
 			 browsePanel = new Browser(cc, this);
 			panel.add(browsePanel, "Browse");
 			browsePanel.setLayout(new BorderLayout(0, 0));
-			
-			JPanel seatMap = new JPanel();
-			seatMap.setBackground(SystemColor.info);
-			panel.add(seatMap, "name_297321563721300");
-			seatMap.setLayout(null);
-			
-			JButton btnNewButton = new JButton("Screen");
-			btnNewButton.setBackground(SystemColor.info);
-			btnNewButton.setBounds(37, 0, 1003, 25);
-			seatMap.add(btnNewButton);
-			
-			JButton A1 = new JButton("A");
-			A1.setIcon(null);
-			A1.setBounds(105, 85, 68, 48);
-			seatMap.add(A1);
-			
-			JLabel lblNewLabel = new JLabel("Row 1");
-			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			lblNewLabel.setBounds(12, 99, 56, 16);
-			seatMap.add(lblNewLabel);
-			
-			JButton B1 = new JButton("B");
-			B1.setBounds(245, 85, 68, 48);
-			seatMap.add(B1);
-			
-			JButton C1 = new JButton("C");
-			C1.setBounds(392, 85, 68, 48);
-			seatMap.add(C1);
-			
-			JButton D1 = new JButton("D");
-			D1.setBounds(543, 85, 68, 48);
-			seatMap.add(D1);
-			
-			JButton E1 = new JButton("E");
-			E1.setBounds(706, 85, 68, 48);
-			seatMap.add(E1);
-			
-			JButton F1 = new JButton("F");
-			F1.setBounds(879, 85, 68, 48);
-			seatMap.add(F1);
-			
-			JButton F2 = new JButton("F");
-			F2.setBounds(879, 245, 68, 48);
-			seatMap.add(F2);
-			
-			JButton E2 = new JButton("E");
-			E2.setBounds(706, 245, 68, 48);
-			seatMap.add(E2);
-			
-			JButton D2 = new JButton("D");
-			D2.setBounds(543, 245, 68, 48);
-			seatMap.add(D2);
-			
-			JButton C2 = new JButton("C");
-			C2.setBounds(392, 245, 68, 48);
-			seatMap.add(C2);
-			
-			JButton B2 = new JButton("B");
-			B2.setBounds(245, 245, 68, 48);
-			seatMap.add(B2);
-			
-			JButton A2 = new JButton("A");
-			A2.setBounds(105, 245, 68, 48);
-			seatMap.add(A2);
-			
-			JLabel lblRow = new JLabel("Row 2");
-			lblRow.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			lblRow.setBounds(12, 259, 56, 16);
-			seatMap.add(lblRow);
-			
-			JButton F3 = new JButton("F");
-			F3.setBounds(879, 419, 68, 48);
-			seatMap.add(F3);
-			
-			JButton E3 = new JButton("E");
-			E3.setBounds(706, 419, 68, 48);
-			seatMap.add(E3);
-			
-			JButton D3 = new JButton("D");
-			D3.setBounds(543, 419, 68, 48);
-			seatMap.add(D3);
-			
-			JButton C3 = new JButton("C");
-			C3.setBounds(392, 419, 68, 48);
-			seatMap.add(C3);
-			
-			JButton B3 = new JButton("B");
-			B3.setBounds(245, 419, 68, 48);
-			seatMap.add(B3);
-			
-			JButton A3 = new JButton("A");
-			A3.setBounds(105, 419, 68, 48);
-			seatMap.add(A3);
-			
-			JLabel lblRow_1 = new JLabel("Row 3");
-			lblRow_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			lblRow_1.setBounds(12, 433, 56, 16);
-			seatMap.add(lblRow_1);
-			
-			JButton F4 = new JButton("F");
-			F4.setBounds(879, 575, 68, 48);
-			seatMap.add(F4);
-			
-			JButton E4 = new JButton("E");
-			E4.setBounds(706, 575, 68, 48);
-			seatMap.add(E4);
-			
-			JButton D4 = new JButton("D");
-			D4.setBounds(543, 575, 68, 48);
-			seatMap.add(D4);
-			
-			JButton C4 = new JButton("C");
-			C4.setBounds(392, 575, 68, 48);
-			seatMap.add(C4);
-			
-			JButton B4 = new JButton("B");
-			B4.setBounds(245, 575, 68, 48);
-			seatMap.add(B4);
-			
-			JButton A4 = new JButton("A");
-			A4.setBounds(105, 575, 68, 48);
-			seatMap.add(A4);
-			
-			JLabel lblRow_2 = new JLabel("Row 4");
-			lblRow_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			lblRow_2.setBounds(12, 589, 56, 16);
-			seatMap.add(lblRow_2);
 			
 			JPanel purchasePanel = new JPanel();
 			purchasePanel.setBackground(SystemColor.inactiveCaption);
@@ -771,38 +645,20 @@ public class GuiController implements view.boundary.Observer{
 			LnameCancelTicket.setBounds(148, 264, 116, 22);
 			cancelTicketPanel.add(LnameCancelTicket);
 		}
+
+	@Override
+	public boolean loginStatus() {
+		// TODO Auto-generated method stub
+		return regUser;
+	}
+
+	@Override
+	public void setStatus(boolean status) {
+		this.regUser=status;
+	}
 		 
 	}
 
-	@Override
-	public boolean regUser() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public ArrayList<Object> getMovieSelection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Object> getTheaterSelection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Object> getShowtimeSelection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Object> getSeatSelection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 	
