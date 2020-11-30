@@ -54,7 +54,7 @@ public void setPrice(double price) {
 
     @Override
     public String toString(){
-        return getPosition();
+        return getPosition()+" " +status;
     }
 
 }

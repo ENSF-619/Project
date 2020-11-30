@@ -115,6 +115,9 @@ public class ShowtimeList {
 		}
 		return temp;
 	}
+	public ArrayList<Showtime>  getAllShowtimes() {
+		return showtimes;
+	}
 
 
 

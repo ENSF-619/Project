@@ -4,9 +4,28 @@ import java.util.ArrayList;
 
 public class TicketList {
 	private ArrayList<Ticket> tickets;
+	private ArrayList<Showtime> showtimes;
 
-	public TicketList(ArrayList<Ticket> tlist){
+	public TicketList(ArrayList<Ticket> tlist, ArrayList<Showtime> arrayList){
 		setTickets(tlist);
+		this.showtimes=arrayList;
+		setUnavailableSeats();
+	}
+
+	private void setUnavailableSeats() {
+		for (Ticket ticket : tickets) {
+			for(Showtime showtime: showtimes ) {
+				if (ticket.getShowtimeId()==showtime.getShowtimeId()) {
+					ArrayList<Seat> temp= showtime.getSeats();
+					for (int i=0 ;i<temp.size();i++) {
+						if(ticket.getSeatNum().equals(temp.get(i).getPosition())) {
+							temp.get(i).setStatus(false);
+						}
+					}
+				}
+			}
+		}
+		
 	}
 
 	public ArrayList<Ticket> getTickets() {

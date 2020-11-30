@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -41,7 +42,18 @@ public class LoginController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//TODO check with model and set the username/pasword in guicontroller
+		if (e.getSource()==loginBtn) {
+			System.err.println("HERE");
+			String user=userName.getText();
+			String pass=password.getText();
+			if(cc.getHub().getRegUsers().checkPassword(user, pass)) {
+				observer.setStatus(true);
+				JOptionPane.showMessageDialog(panel, "Login is valid");
+			}
+			else 
+				JOptionPane.showMessageDialog(panel, "Wrong username or password");
+		}
+		//TODO check with model and set the username/pasword in guicontroller and set status
 	}
 
 }

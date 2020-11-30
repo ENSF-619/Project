@@ -117,6 +117,7 @@ public class PaymentController implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Fill in information");
 			}
 			else {
+				
 				for (int i=0 ;i<selectedSeats.size();i++) {
 					cc.getHub().getTickets().addTicket(new Ticket (ticketNum,selectedSeats.get(i).getPrice(),new Date(System.currentTimeMillis())+"",showTime.getShowtimeId(),selectedSeats.get(i).getPosition()));
 					showTime.getSeatById(selectedSeats.get(i).getPosition()).setStatus(false);

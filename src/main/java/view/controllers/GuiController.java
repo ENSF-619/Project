@@ -8,6 +8,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.AbstractListModel;
@@ -33,8 +37,8 @@ import view.boundary.Browser;
 import view.boundary.LoginForm;
 
 
-public class GuiController implements view.boundary.Observer{
-	
+public class GuiController implements view.boundary.Observer,ActionListener{
+	String userName,password;
 	 private JFrame frame;
 	private JMenuItem loginItem;
 	private JMenuItem registerItem;
@@ -44,6 +48,8 @@ public class GuiController implements view.boundary.Observer{
 	private Browser browsePanel;
 	private boolean regUser;
 	private LoginForm loginPanel;
+	private JPanel panel;
+	private CardLayout c;
 
 	public GuiController(CinemaController cc) {
 		 	frame = new JFrame();
@@ -60,11 +66,13 @@ public class GuiController implements view.boundary.Observer{
 			loginItem = new JMenuItem("Login");
 			UserMenu.add(loginItem);
 			
+			
 			registerItem = new JMenuItem("Register");
 			UserMenu.add(registerItem);
 			
 			cancelItem = new JMenuItem("Cancel Ticket");
 			UserMenu.add(cancelItem);
+			
 			
 			newsItem = new JMenu("News");
 			newsItem.setVisible(false);//TODO:: checks if login is a Regestered USER then it is enabled
@@ -74,23 +82,22 @@ public class GuiController implements view.boundary.Observer{
 			menuBar.add(newsItem);
 			frame.getContentPane().setLayout(new BorderLayout(0, 0));
 			
-			JPanel panel = new JPanel();
+			
+			 panel = new JPanel();
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
-			CardLayout c =new CardLayout(0,0);
+			 c =new CardLayout(0,0);
 			panel.setLayout(c);
 			
 			 browsePanel = new Browser(cc, this);
 			 panel.add(browsePanel, "Browse");
 			
-			 loginPanel = new LoginForm(cc, this);
+			loginPanel = new LoginForm(cc, this);
 			loginPanel.setBackground(SystemColor.inactiveCaption);
 			panel.add(loginPanel, "Login");
 			
 			JPanel registerPanel = new JPanel();
 			panel.add(registerPanel, "Register");
-			browsePanel.setC(c);
-			browsePanel.setPanel(panel);
-			browsePanel.setActions();
+			
 			c.show(panel, "Browse");
 //			
 //			JPanel newsPanel = new JPanel();
@@ -173,41 +180,108 @@ public class GuiController implements view.boundary.Observer{
 //			LnameCancelTicket.setColumns(10);
 //			LnameCancelTicket.setBounds(148, 264, 116, 22);
 //			cancelTicketPanel.add(LnameCancelTicket);
-		}
+		
+			setControllers();
+	
+			loginItem.addActionListener(this);
+			registerItem.addActionListener(this);
+			cancelItem.addActionListener(this);
+			newsItem.addActionListener(this);
+		
+			browseItem.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					c.show(panel, "Browse");
+				}
+			});;
+			
+	
+	}
+
+	private void setControllers() {
+		browsePanel.setC(c);
+		browsePanel.setPanel(panel);
+		browsePanel.setActions();
+		
+		loginPanel.setC(c);
+		loginPanel.setPanel(panel);
+		loginPanel.setActions();
+		
+	}
 
 	@Override
 	public boolean loginStatus() {
-		// TODO Auto-generated method stub
 		return regUser;
 	}
 
 	@Override
 	public void setStatus(boolean status) {
 		this.regUser=status;
+		newsItem.setVisible(true);
 	}
 
 	@Override
 	public void setRegUserName(String userName) {
-		// TODO Auto-generated method stub
+		this.userName=userName;
 		
 	}
 
 	@Override
 	public String getUserName() {
-		// TODO Auto-generated method stub
-		return null;
+		return userName;
 	}
 
 	@Override
 	public void setRegPassword(String password) {
-		// TODO Auto-generated method stub
+		this.password=password;
 		
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
+		return password;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+			if(e.getSource()==loginItem) {
+				c.show(panel, "Login");
+			}
+			if (e.getSource()==registerItem) {
+				c.show(panel, "Register");
+			}
+			if(e.getSource()==cancelItem) {
+				c.show(panel, "Cancel");
+			}
+			if(e.getSource()==newsItem) {
+				c.show(panel, "News");
+			}
+				
 	}
 		 
 	}
