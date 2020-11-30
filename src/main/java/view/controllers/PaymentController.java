@@ -132,7 +132,7 @@ public class PaymentController implements ActionListener {
 						showTime.getSeatById(selectedSeats.get(i).getPosition()).setStatus(false);
 					}
 					JOptionPane.showMessageDialog(null, "Your card has been charged: "+total.getText()+" $\nConfirmation has been sent to " + email.getText()+"\nYour Tickets are: "+tempStorage.toString());
-					c.show(panel, "home");
+					c.show(panel, "Browse");
 				}
 			} else {
 				int id = Integer.parseInt(voucherID.getText());

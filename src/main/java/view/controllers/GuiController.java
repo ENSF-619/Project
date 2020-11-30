@@ -35,6 +35,7 @@ import javax.swing.event.ListSelectionListener;
 import controller.CinemaController;
 import view.boundary.Browser;
 import view.boundary.LoginForm;
+import view.boundary.RegistrationForm;
 
 
 public class GuiController implements view.boundary.Observer,ActionListener{
@@ -50,6 +51,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 	private LoginForm loginPanel;
 	private JPanel panel;
 	private CardLayout c;
+	private RegistrationForm registerPanel;
 
 	public GuiController(CinemaController cc) {
 		 	frame = new JFrame();
@@ -87,7 +89,6 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
 			 c =new CardLayout(0,0);
 			panel.setLayout(c);
-			panel.add(panel,"home");
 			
 			 browsePanel = new Browser(cc, this);
 			 panel.add(browsePanel, "Browse");
@@ -96,7 +97,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 			loginPanel.setBackground(SystemColor.inactiveCaption);
 			panel.add(loginPanel, "Login");
 			
-			JPanel registerPanel = new JPanel();
+			 registerPanel = new RegistrationForm(cc);
 			panel.add(registerPanel, "Register");
 			
 			c.show(panel, "Browse");
@@ -232,6 +233,9 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 		loginPanel.setC(c);
 		loginPanel.setPanel(panel);
 		loginPanel.setActions();
+		
+		registerPanel.setC(c);
+		registerPanel.setPanel(panel);
 		
 	}
 
