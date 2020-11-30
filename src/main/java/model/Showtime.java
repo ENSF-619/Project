@@ -25,9 +25,12 @@ public class Showtime{
     public void createSeats(){
         this.seats = new ArrayList<Seat>();
         for(char i = 'A';i < 'G';  i++) {
-			for(int j = 10; j<20; j++){
+			for(int j = 1; j<=4; j++){
                 Seat s = new Seat(Integer.toString(j)+Character.toString(i));
+                s.setStatus(true);
+                s.setPrice(14);
                 seats.add(s);
+                
             }
         }
     }
@@ -41,6 +44,13 @@ public class Showtime{
 		return null;
 	}
 
+    public void setSeatVailability(String seatNum,boolean status) {
+    	for (Seat seat : seats) {
+			if (seat.getPosition().equals(seatNum)) {
+				seat.setStatus(status);
+			}
+		}
+    }
     /**
      * @return String return the dateTime
      */

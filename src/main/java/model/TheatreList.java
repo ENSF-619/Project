@@ -8,6 +8,15 @@ public class TheatreList {
 	public TheatreList(ArrayList<Theatre> tlist){
 		this.theatres = tlist;
 	}
+	public ArrayList<Theatre> findTheatre(String name) {
+		ArrayList<Theatre> temp = new ArrayList<Theatre>();
+		for (Theatre theatre : theatres) {
+			if (theatre.getTheatreName().toLowerCase().contains(name.toLowerCase())) {
+				temp.add(theatre);
+			}
+		}
+		return temp;
+	}
 	
 	public Theatre getTheatre(int id) {
 		for(Theatre theatre : theatres) {
@@ -31,6 +40,9 @@ public class TheatreList {
 		if(!checkTheatre(th)){
 			theatres.add(th);
 		}
+	}
+	public ArrayList<Theatre> getAllTheatres(){
+		return theatres;
 	}
 
 	public void removeTheatre(Theatre th){

@@ -3,11 +3,21 @@ package model;
 public class Seat{
     private boolean status;
     private String position;
+   private double price;
 
     
-    public Seat(boolean s, String spot){
+    public double getPrice() {
+	return price;
+}
+
+public void setPrice(double price) {
+	this.price = price;
+}
+
+	public Seat(boolean s, String spot,double price){
         setPosition(spot);
         setStatus(s);
+        this.price=price;
     }
 
     public Seat(String spot){
@@ -44,7 +54,7 @@ public class Seat{
 
     @Override
     public String toString(){
-        return getPosition();
+        return getPosition()+" " +status;
     }
 
 }

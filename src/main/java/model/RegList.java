@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class RegList {
 
 	ArrayList<RegisteredUser> registeredUsers;
-
+	
 
 	public RegList(ArrayList<RegisteredUser> regUsers){
 		this.registeredUsers = regUsers;

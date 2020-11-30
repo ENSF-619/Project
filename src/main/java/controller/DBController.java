@@ -2,13 +2,17 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.mysql.cj.xdevapi.PreparableStatement;
+
 import model.Movie;
 import model.RegisteredUser;
+import model.Seat;
 import model.Showtime;
 import model.Theatre;
 import model.Ticket;
@@ -137,4 +141,15 @@ public class DBController implements JDBCConnectionInfo {
 		}
 		return vouchers;
 	}
+//	public ArrayList<Seat> getSeat (int showTimeId) throws SQLException{
+//		ArrayList<Seat> seats=new ArrayList<Seat>();
+//		String sql=" SELECT  SeatNumber FROM " +TICKETTABLE +" WHERE ShowtimeId = ? ";
+//		PreparedStatement prep= jdbc_connection.prepareStatement(sql);
+//		prep.setInt(1, showTimeId);
+//		ResultSet result= prep.executeQuery();
+//		while ()
+//		
+//		
+//		
+//	}
 }
