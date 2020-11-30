@@ -24,6 +24,7 @@ public class App {
 		
 		CinemaHub cinema = new CinemaHub(movies, theatres, showtimes, tickets, regUsers, vouchers);
 		CinemaController ctr=new CinemaController(cinema);
+		
 //		System.err.println(ctr.getHub().getShowtimes().getShowtimeById(10005).getSeats().toString());
 		GuiController gui =new GuiController(ctr);
 //		System.err.println(ctr.getHub().getMovies().getAllMovies().toString());

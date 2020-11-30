@@ -23,7 +23,8 @@ public class RegList {
 	public boolean checkPassword(String username, String password) {
     	for (RegisteredUser registeredUser : registeredUsers) {
     		if(registeredUser.getUsername().equals(username) && 
-    				registeredUser.getUsername().equals(password)) {
+    				registeredUser.getPassword().equals(password)) {
+    			System.err.println("YAAAA");
     			return true;
     		}
     	}
@@ -33,7 +34,7 @@ public class RegList {
 	public RegisteredUser getUser(String username, String password) {
     	for (RegisteredUser registeredUser : registeredUsers) {
     		if(registeredUser.getUsername().equals(username) && 
-    				registeredUser.getUsername().equals(password)) {
+    				registeredUser.getPassword().equals(password)) {
     			return registeredUser;
     		}
     	}

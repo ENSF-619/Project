@@ -94,6 +94,7 @@ public class PaymentController implements ActionListener {
 		}
 		seatField.setText(sb.toString());
 		if (observer.loginStatus()) {
+			
 			RegisteredUser temp = cc.getHub().getRegUsers().getUser(observer.getUserName(), observer.getPassword());
 			fName.setText(temp.getFname());
 			lName.setText(temp.getLname());

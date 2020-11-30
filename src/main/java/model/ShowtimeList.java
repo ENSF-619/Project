@@ -71,10 +71,17 @@ public class ShowtimeList {
 	 */
 	public ArrayList<Movie> getAllMovieByTheatre(int theatreID, boolean regUser){
 		ArrayList<Movie> temp= new ArrayList<Movie>();
+		if(regUser) {
 		for (Showtime showtime : showtimes){
-			if(showtime.getTheatreId()==theatreID && showtime.getRestricted()==regUser)
+			if(showtime.getTheatreId()==theatreID )
 				temp.add(showtime.getMovie());
-			}
+			}}
+		else {
+			for (Showtime showtime : showtimes){
+				if(showtime.getTheatreId()==theatreID && showtime.getRestricted()==regUser)
+					temp.add(showtime.getMovie());
+				}
+		}
 		return temp;
 		}
 	/**
@@ -84,10 +91,18 @@ public class ShowtimeList {
 	 */
 	public ArrayList<Theatre> getAllTheatrsByMovie(int movieID,boolean regUser){
 		ArrayList<Theatre> temp= new ArrayList<Theatre>();
+		if(regUser) {
 		for (Showtime showtime : showtimes){
-			if(showtime.getMovieId()==movieID && showtime.getRestricted()==regUser)
+			if(showtime.getMovieId()==movieID )
 				temp.add(showtime.getTheatre());
-			}
+			}}
+		else {
+			for (Showtime showtime : showtimes){
+				if(showtime.getMovieId()==movieID && showtime.getRestricted()==regUser)
+					temp.add(showtime.getTheatre());
+				}
+		}
+			
 		return temp;
 		}
 	/**
