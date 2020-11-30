@@ -87,6 +87,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
 			 c =new CardLayout(0,0);
 			panel.setLayout(c);
+			panel.add(panel,"home");
 			
 			 browsePanel = new Browser(cc, this);
 			 panel.add(browsePanel, "Browse");

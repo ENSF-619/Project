@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
@@ -39,7 +40,6 @@ public class BrowserController implements ActionListener,ListSelectionListener {
 	private int	movieID=0;
 	private int theatrID=0;
 	private int showtimeID=0;
-	private String tables;
 
 	
 	private CinemaController cc;
@@ -77,7 +77,21 @@ public class BrowserController implements ActionListener,ListSelectionListener {
 		this.c = c;
 	}
 
+	public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list) 
+	{ 
 
+	    ArrayList<T> newList = new ArrayList<T>(); 
+
+	    for (T element : list) { 
+
+	        if (!newList.contains(element)) { 
+
+	            newList.add(element); 
+	        } 
+	    } 
+
+	    return newList; 
+	}
 /**
  * Populates the list table
  * @param data it can be a single movie or list movies
@@ -88,17 +102,21 @@ public void populateMovieTable(ArrayList<Movie> movies) {
 	model.addColumn("Movie ID");
 	model.addColumn("Movie Name");
 	model.addColumn("Movie Rating");
+	movies=removeDuplicates(movies);
 	for( int i=0;i<movies.size();i++) {
 		model.insertRow(0,new  Object[] {movies.get(i).getMovieId(),movies.get(i).getMovieName(),movies.get(i).getRating()});
 }
 	
 }
+
 public void populateTheaterTable(ArrayList<Theatre> theatrs) {
 	model.setColumnCount(0);
 	model.setRowCount(0);
 	model.addColumn("Theater ID");
 	model.addColumn("Theater Name");
 	model.addColumn("Theater Address");
+	
+	theatrs=removeDuplicates(theatrs);
 	for( int i=0;i<theatrs.size();i++) {
 		model.insertRow(0,new  Object[] {theatrs.get(i).getTheatreId(),theatrs.get(i).getTheatreName(),theatrs.get(i).getTheatreAddress()});
 }
@@ -109,7 +127,6 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 	model.setRowCount(0);
 	model.addColumn("Showtime ID");
 	model.addColumn("Showtime Date");
-	
 	for( int i=0;i<showTime.size();i++) {
 		model.insertRow(0,new  Object[] {showTime.get(i).getShowtimeId(),showTime.get(i).getdateTime()});
 }
@@ -135,7 +152,6 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 				public void valueChanged(ListSelectionEvent e) {
 					theatrID= (int) table.getValueAt(table.getSelectedRow(), 0);
 					ArrayList<Showtime> showTimeList=cc.getHub().getShowtimes().getAllShowtimesByTheatreAndMovie(theatrID, movieID);
-					System.err.println(showTimeList.get(0).getShowtimeId());
 					model=new DefaultTableModel();
 					table = new JTable(model);
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -155,9 +171,6 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 				}
 			});}
 			
-		//TODO traverse over the columns avilable
-		//table.getColumnCount()
-		//table.getValueAt(table.getSelectedRow(), 0)
 			
 				
 				
@@ -209,7 +222,6 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 				scrollpane.setViewportView(table);
 				table.getSelectionModel().addListSelectionListener(this);
 				route=0;
-				tables="Movie";
 				String temp=searchField.getText();
 				ArrayList<Movie> movieList=cc.getHub().getMovies().findMovies(temp);
 				populateMovieTable(movieList);
@@ -222,7 +234,6 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 				scrollpane.setViewportView(table);
 				table.getSelectionModel().addListSelectionListener(this);
 				route=1;
-				tables="Theatr";
 				String temp2=searchField.getText();
 				ArrayList<Theatre> theatreList=cc.getHub().getTheatres().findTheatre(temp2);
 				populateTheaterTable(theatreList);
@@ -235,7 +246,6 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 					scrollpane.setViewportView(table);
 					table.getSelectionModel().addListSelectionListener(this);
 				route=0;
-				tables="Movie";
 				populateMovieTable(cc.getHub().getMovies().getAllMovies());
 				
 			}
@@ -246,14 +256,11 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 					scrollpane.setViewportView(table);
 					table.getSelectionModel().addListSelectionListener(this);
 				route=1;
-				tables="Theatr";
 				populateTheaterTable(cc.getHub().getTheatres().getAllTheatres());
 				
 			}
 				
 		}
-		// TODO check login status first
-		//SET THE BOOLEAN TO TRUE WHEN T?HE BUTTON IS CLICKED
 		
 	}
 

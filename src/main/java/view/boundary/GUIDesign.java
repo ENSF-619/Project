@@ -361,7 +361,7 @@ public class GUIDesign {
 		
 		movieName = new JTextField();
 		movieName.setEditable(false);
-		movieName.setColumns(10);
+		movieName.setColumns(20);
 		GridBagConstraints gbc_movieName = new GridBagConstraints();
 		gbc_movieName.anchor = GridBagConstraints.NORTHWEST;
 		gbc_movieName.insets = new Insets(0, 0, 5, 5);

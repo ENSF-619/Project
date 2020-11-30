@@ -6,7 +6,10 @@ import java.awt.event.ActionListener;
 import java.security.Timestamp;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -93,6 +96,7 @@ public class PaymentController implements ActionListener {
 			price += selectedSeats.get(i).getPrice();
 		}
 		seatField.setText(sb.toString());
+		//if regUSer
 		if (observer.loginStatus()) {
 			
 			RegisteredUser temp = cc.getHub().getRegUsers().getUser(observer.getUserName(), observer.getPassword());
@@ -106,11 +110,6 @@ public class PaymentController implements ActionListener {
 
 	}
 
-//TODO change this method
-	public int generateCustomerID() {
-		Random r = new Random(System.currentTimeMillis());
-		return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -120,10 +119,10 @@ public class PaymentController implements ActionListener {
 						|| credit.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Fill in information");
 				} else {
-
+				ArrayList<Integer> tempStorage=new ArrayList<Integer>();
 					for (int i = 0; i < selectedSeats.size(); i++) {
-						ticketNum = generateCustomerID();
-						System.err.println(ticketNum);
+						ticketNum =(int) (Math.random()*(100000));
+						tempStorage.add(ticketNum);
 						Ticket ticket = new Ticket(ticketNum, selectedSeats.get(i).getPrice(),
 								new Date(System.currentTimeMillis()) + "", showTime.getShowtimeId(),
 								selectedSeats.get(i).getPosition());
@@ -132,9 +131,8 @@ public class PaymentController implements ActionListener {
 
 						showTime.getSeatById(selectedSeats.get(i).getPosition()).setStatus(false);
 					}
-					System.err.println(cc.getHub().getTickets().toString());
-					JOptionPane.showMessageDialog(null, "Confirmation has been sent to " + email.getText());
-					c.show(panel, "Browse");
+					JOptionPane.showMessageDialog(null, "Your card has been charged: "+total.getText()+" $\nConfirmation has been sent to " + email.getText()+"\nYour Tickets are: "+tempStorage.toString());
+					c.show(panel, "home");
 				}
 			} else {
 				int id = Integer.parseInt(voucherID.getText());
@@ -148,10 +146,10 @@ public class PaymentController implements ActionListener {
 					if (before >= voucherAmount) {
 						total.setText((before - temp.getVoucherAmmount()) + "");
 						cc.getHub().getVouchers().removeVoucher(temp);
-						JOptionPane.showMessageDialog(null,
-								"Your voucher is valid!! Confirmation has been sent to " + email.getText());
+						ArrayList<Integer> tempStorage=new ArrayList<Integer>();
 						for (int i = 0; i < selectedSeats.size(); i++) {
-							ticketNum = generateCustomerID();
+							ticketNum = (int) (Math.random()*(100000));
+							tempStorage.add(ticketNum);
 							Ticket ticket = new Ticket(ticketNum, selectedSeats.get(i).getPrice(),
 									new Date(System.currentTimeMillis()) + "", showTime.getShowtimeId(),
 									selectedSeats.get(i).getPosition());
@@ -160,23 +158,26 @@ public class PaymentController implements ActionListener {
 
 							showTime.getSeatById(selectedSeats.get(i).getPosition()).setStatus(false);
 						}
+						JOptionPane.showMessageDialog(null,
+								"Your voucher is valid!!\n Your credit card was charged: "+total.getText()+"$\n Confirmation has been sent to " + email.getText()+"\n Your Tickets are: "+tempStorage.toString());
 						c.show(panel, "Browse");
 					} else {
 						total.setText(0 + "");
 						cc.getHub().getVouchers().getVoucher(id).setVoucherAmmount(voucherAmount - before);
-						JOptionPane.showMessageDialog(null,
-								"Your voucher is valid!! Confirmation has been sent to " + email.getText());
+						ArrayList<Integer> tempStorage=new ArrayList<Integer>();
 						for (int i = 0; i < selectedSeats.size(); i++) {
-							ticketNum = generateCustomerID();
-							System.err.println(ticketNum);
+							ticketNum = (int) (Math.random()*(100000));
+							tempStorage.add(ticketNum);
 							Ticket ticket = new Ticket(ticketNum, selectedSeats.get(i).getPrice(),
 									new Date(System.currentTimeMillis()) + "", showTime.getShowtimeId(),
 									selectedSeats.get(i).getPosition());
 
 							cc.getHub().getTickets().addTicket(ticket);
-
+							
 							showTime.getSeatById(selectedSeats.get(i).getPosition()).setStatus(false);
 						}
+						JOptionPane.showMessageDialog(null,
+								"Your voucher is valid!!\n Your credit wassnt charge ---used credit\n Confirmation has been sent to " + email.getText()+"\n Your Tickets are: "+tempStorage.toString());
 						c.show(panel, "Browse");
 					}
 
