@@ -37,6 +37,7 @@ private JButton purchaseBtn;
 private PaymentController controller;
 private JTextField theatreAddress;
 private JTextField total;
+private JTextField voucherID;
 
 public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, ArrayList<Seat> selectedSeats, CardLayout c, JPanel panel) {
 	setBackground(SystemColor.inactiveCaption);
@@ -320,10 +321,26 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	gbc_total.gridx = 3;
 	gbc_total.gridy = 8;
 	add(total, gbc_total);
+	JLabel lblVoucher = new JLabel("Voucher");
+	GridBagConstraints gbc_lblVoucher = new GridBagConstraints();
+	gbc_lblVoucher.insets = new Insets(0, 0, 5, 5);
+	gbc_lblVoucher.anchor = GridBagConstraints.EAST;
+	gbc_lblVoucher.gridx = 4;
+	gbc_lblVoucher.gridy = 8;
+	add(lblVoucher, gbc_lblVoucher);
+	
+	voucherID = new JTextField();
+	voucherID.setColumns(10);
+	GridBagConstraints gbc_voucherID = new GridBagConstraints();
+	gbc_voucherID.anchor = GridBagConstraints.WEST;
+	gbc_voucherID.insets = new Insets(0, 0, 5, 5);
+	gbc_voucherID.gridx = 5;
+	gbc_voucherID.gridy = 8;
+	add(voucherID, gbc_voucherID);
 	
 	controller=new PaymentController(cc,observer,showTime,selectedSeats,c,panel,ticketID
 			,movieName,theaterName,theatreAddress,showTimeField,seatSelected,firstName,lastName,Email,creditCardNum,monthComboBox,
-			yearComboBox,CCV,purchaseBtn,total);
+			yearComboBox,CCV,purchaseBtn,total,voucherID);
 	
 	purchaseBtn.addActionListener(controller);
 }

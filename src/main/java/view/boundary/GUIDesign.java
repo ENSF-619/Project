@@ -67,6 +67,7 @@ public class GUIDesign {
 	private JTable table;
 	private JTextField theatreAddress;
 	private JTextField total;
+	private JTextField voucherID;
 
 	/**
 	 * Launch the application.
@@ -315,7 +316,7 @@ public class GUIDesign {
 		GridBagLayout gbl_purchasePanel = new GridBagLayout();
 		gbl_purchasePanel.columnWidths = new int[]{56, 12, 3, 84, 57, 283, 195, 0};
 		gbl_purchasePanel.rowHeights = new int[]{36, 22, 22, 22, 44, 22, 44, 22, 41, 36, 22, 22, 33, 22, 39, 22, 22, 25, 0, 0, 0};
-		gbl_purchasePanel.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_purchasePanel.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_purchasePanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		purchasePanel.setLayout(gbl_purchasePanel);
 		
@@ -461,6 +462,23 @@ public class GUIDesign {
 		gbc_total.gridx = 3;
 		gbc_total.gridy = 8;
 		purchasePanel.add(total, gbc_total);
+		
+		JLabel lblVoucher = new JLabel("Voucher");
+		GridBagConstraints gbc_lblVoucher = new GridBagConstraints();
+		gbc_lblVoucher.insets = new Insets(0, 0, 5, 5);
+		gbc_lblVoucher.anchor = GridBagConstraints.EAST;
+		gbc_lblVoucher.gridx = 4;
+		gbc_lblVoucher.gridy = 8;
+		purchasePanel.add(lblVoucher, gbc_lblVoucher);
+		
+		voucherID = new JTextField();
+		voucherID.setColumns(10);
+		GridBagConstraints gbc_voucherID = new GridBagConstraints();
+		gbc_voucherID.anchor = GridBagConstraints.WEST;
+		gbc_voucherID.insets = new Insets(0, 0, 5, 5);
+		gbc_voucherID.gridx = 5;
+		gbc_voucherID.gridy = 8;
+		purchasePanel.add(voucherID, gbc_voucherID);
 		
 		JLabel lblPaymentInfo = new JLabel("Payment Info");
 		lblPaymentInfo.setFont(new Font("Tahoma", Font.PLAIN, 22));
