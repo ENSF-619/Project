@@ -35,6 +35,7 @@ import javax.swing.event.ListSelectionListener;
 import controller.CinemaController;
 import view.boundary.Browser;
 import view.boundary.LoginForm;
+import view.boundary.RefundForm;
 import view.boundary.RegistrationForm;
 
 
@@ -52,6 +53,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 	private JPanel panel;
 	private CardLayout c;
 	private RegistrationForm registerPanel;
+	private RefundForm cancelPanel;
 
 	public GuiController(CinemaController cc) {
 		 	frame = new JFrame();
@@ -77,7 +79,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 			
 			
 			newsItem = new JMenu("News");
-			newsItem.setVisible(false);//TODO:: checks if login is a Regestered USER then it is enabled
+			newsItem.setVisible(false);
 			
 			browseItem = new JMenu("Browse");
 			menuBar.add(browseItem);
@@ -99,6 +101,8 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 			
 			 registerPanel = new RegistrationForm(cc);
 			panel.add(registerPanel, "Register");
+			cancelPanel =new RefundForm(cc, this);
+			panel.add(cancelPanel,"Refund");
 			
 			c.show(panel, "Browse");
 //			
@@ -237,6 +241,9 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 		registerPanel.setC(c);
 		registerPanel.setPanel(panel);
 		
+		cancelPanel.setC(c);
+		cancelPanel.setPanel(panel);
+		
 	}
 
 	@Override
@@ -248,6 +255,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 	public void setStatus(boolean status) {
 		this.regUser=status;
 		newsItem.setVisible(true);
+		cancelPanel.populateFields();
 	}
 
 	@Override
@@ -281,7 +289,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 				c.show(panel, "Register");
 			}
 			if(e.getSource()==cancelItem) {
-				c.show(panel, "Cancel");
+				c.show(panel, "Refund");
 			}
 			if(e.getSource()==newsItem) {
 				c.show(panel, "News");

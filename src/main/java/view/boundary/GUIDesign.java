@@ -970,8 +970,8 @@ public class GUIDesign {
 		panel.add(home, "name_510069479194200");
 		home.setLayout(null);
 		
-		Canvas canvas = new Canvas();
-		canvas.setBounds(0, 0, 307, 392);
-		home.add(canvas);
+		JLabel lblNewLabel_8 = new JLabel("New label");
+		lblNewLabel_8.setBounds(505, 130, 56, 16);
+		home.add(lblNewLabel_8);
 	}
 }
