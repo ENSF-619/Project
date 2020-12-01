@@ -9,6 +9,7 @@ public class CinemaHub {
 	private RegList regUsers;
 	private User user;
 	private VoucherList vouchers;
+	private News news;
 	
 	public CinemaHub(MovieList movies, TheatreList theatres, ShowtimeList showtimes, TicketList tickets,
 			RegList regUsers, VoucherList vouchers) {
@@ -19,6 +20,7 @@ public class CinemaHub {
 		this.regUsers = regUsers;
 		this.user = new User();
 		this.vouchers = vouchers;
+		this.news = new News();
 		
 		// SETTING AGG RELATIONS
 		showtimes.setMovies(movies);
