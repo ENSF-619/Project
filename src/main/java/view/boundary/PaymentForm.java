@@ -1,5 +1,16 @@
 package view.boundary;
 
+/**
+ * ENSF 619 Group Project
+ * This bounday is the payment form view which allows program users to enter
+ * payment information
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;

@@ -1,5 +1,16 @@
 package controller;
 
+/**
+ * ENSF 619 Group Project
+ * This controller is used for connection and communication between 
+ * our model and our CinemaApp database.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

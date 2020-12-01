@@ -1,4 +1,14 @@
 package view.controllers;
+/**
+ * ENSF 619 Group Project
+ * This controller holds action listeners for our Login window which
+ * allows users to perform a login to our system as a registered user
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

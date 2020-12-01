@@ -1,5 +1,16 @@
 package view.boundary;
 
+/**
+ * ENSF 619 Group Project
+ * This boundary is our view for the seatmap which allows users
+ * to view availble seats and select based on their choice.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.SystemColor;

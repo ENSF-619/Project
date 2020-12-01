@@ -1,4 +1,14 @@
 package view.controllers;
+/**
+ * ENSF 619 Group Project
+ * This controller holds action listeners for our PaymentForm panel, so users may interact
+ * can add their information and complete purchases.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

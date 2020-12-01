@@ -1,5 +1,16 @@
 package view.boundary;
 
+/**
+ * ENSF 619 Group Project
+ * RefunDForm is the boundary whichallows users to fill
+ * refund information to allow for ticket cancellation.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.awt.CardLayout;
 import java.awt.SystemColor;
 

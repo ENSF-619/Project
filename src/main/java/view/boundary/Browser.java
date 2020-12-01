@@ -1,5 +1,17 @@
 package view.boundary;
 
+/**
+ * ENSF 619 Group Project
+ * Browser is the boundary/GUI for our browse functionality
+ * which allows users to view and select availble theatres and movies
+ * and their showtimes.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;

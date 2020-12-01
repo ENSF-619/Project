@@ -1,4 +1,14 @@
 package view.boundary;
+/**
+ * ENSF 619 Group Project
+ * This boundary allows users to create registed accounts by filling in payment 
+ * information and creating their username and password.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.awt.CardLayout;
 import java.awt.Font;

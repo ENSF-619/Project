@@ -1,5 +1,16 @@
 package view.controllers;
 
+/**
+ * ENSF 619 Group Project
+ * This controller holds action listeners for our Browser panel, so users may interact
+ * with our system.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
