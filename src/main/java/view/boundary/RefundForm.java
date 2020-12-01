@@ -43,7 +43,7 @@ public class RefundForm extends JPanel{
 		add(lblCreditcardNumber);
 		
 		creditNum = new JTextField();
-		creditNum.setColumns(10);
+		creditNum.setColumns(25);
 		creditNum.setBounds(148, 88, 116, 22);
 		add(creditNum);
 		
