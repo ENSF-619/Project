@@ -1,5 +1,16 @@
 package view.boundary;
 
+/**
+ * ENSF 619 Group Project
+ * This boundary displays the news panel which shows
+ * registered users cinema news.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.awt.BorderLayout;
 import java.awt.SystemColor;
 

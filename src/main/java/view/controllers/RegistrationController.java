@@ -1,4 +1,14 @@
 package view.controllers;
+/**
+ * ENSF 619 Group Project
+ * This controller holds action listeners for our Registration panel, so users can add
+ * registration information to create a registered account.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

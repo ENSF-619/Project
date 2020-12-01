@@ -1,4 +1,14 @@
 package main;
+/**
+ * ENSF 619 Group Project
+ * This class is the entry point for running our program and
+ * contains main which initializes our system.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import model.*;
 
@@ -11,6 +21,7 @@ import controller.*;
 
 import controller.CinemaController;
 import view.controllers.GuiController;
+
 
 public class App {
 

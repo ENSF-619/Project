@@ -1,5 +1,16 @@
 package controller;
 
+/**
+ * ENSF 619 Group Project
+ * This class is used as the controller for our backend model accesed
+ * through cinemahub.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import model.CinemaHub;
 
 public class CinemaController {

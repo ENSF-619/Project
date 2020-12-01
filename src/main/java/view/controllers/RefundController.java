@@ -1,4 +1,14 @@
 package view.controllers;
+/**
+ * ENSF 619 Group Project
+ * This controller holds action listeners for our Refund panel, so users may interact
+ * with our system and accuire refunds for their cancelled tickets.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

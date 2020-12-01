@@ -1,5 +1,16 @@
 package view.boundary;
 
+/**
+ * ENSF 619 Group Project
+ * This boundary represents our main window for our frontend. This boundary allows
+ * users to navigate to different gui frames.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

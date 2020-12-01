@@ -1,4 +1,14 @@
 package view.boundary;
+/**
+ * ENSF 619 Group Project
+ * LoginForm represents the login view for registered users
+ * to interact with and access their account.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.awt.CardLayout;
 import java.awt.SystemColor;
