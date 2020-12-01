@@ -116,76 +116,6 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 //			
 //			JList newsList = new JList();
 //			scrollPane_3.setViewportView(newsList);
-//			
-//			JPanel cancelTicketPanel = new JPanel();
-//			cancelTicketPanel.setBackground(SystemColor.inactiveCaption);
-//			panel.add(cancelTicketPanel, "name_300420731691800");
-//			cancelTicketPanel.setLayout(null);
-//			
-//			JLabel lblNewLabel_6 = new JLabel("Ticket ID");
-//			lblNewLabel_6.setBounds(50, 49, 56, 16);
-//			cancelTicketPanel.add(lblNewLabel_6);
-//			
-//			textField = new JTextField();
-//			textField.setBounds(148, 46, 116, 22);
-//			cancelTicketPanel.add(textField);
-//			textField.setColumns(10);
-//			
-//			JLabel lblCreditcardNumber = new JLabel("CreditCard Number");
-//			lblCreditcardNumber.setBounds(12, 91, 110, 16);
-//			cancelTicketPanel.add(lblCreditcardNumber);
-//			
-//			creditNum = new JTextField();
-//			creditNum.setColumns(10);
-//			creditNum.setBounds(148, 88, 116, 22);
-//			cancelTicketPanel.add(creditNum);
-//			
-//			JButton refundBtn = new JButton("Refund");
-//			refundBtn.setBounds(206, 312, 97, 25);
-//			cancelTicketPanel.add(refundBtn);
-//			
-//			JLabel lblExpiryDate = new JLabel("Expiry Date");
-//			lblExpiryDate.setBounds(12, 137, 110, 16);
-//			cancelTicketPanel.add(lblExpiryDate);
-//			
-//			JComboBox month = new JComboBox();
-//			month.setModel(new DefaultComboBoxModel(new String[] {"Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-//			month.setSelectedIndex(0);
-//			month.setBounds(134, 134, 62, 22);
-//			cancelTicketPanel.add(month);
-//			
-//			JComboBox year = new JComboBox();
-//			year.setModel(new DefaultComboBoxModel(new String[] {"Year", "2020", "2021", "2022", "2023"}));
-//			year.setSelectedIndex(0);
-//			year.setBounds(206, 134, 62, 22);
-//			cancelTicketPanel.add(year);
-//			
-//			JLabel lblCcv_1 = new JLabel("CCV");
-//			lblCcv_1.setBounds(12, 180, 110, 16);
-//			cancelTicketPanel.add(lblCcv_1);
-//			
-//			CCVCancelTicket = new JTextField();
-//			CCVCancelTicket.setColumns(10);
-//			CCVCancelTicket.setBounds(148, 169, 116, 22);
-//			cancelTicketPanel.add(CCVCancelTicket);
-//			
-//			JLabel Fname = new JLabel("First Name");
-//			Fname.setBounds(12, 226, 110, 16);
-//			cancelTicketPanel.add(Fname);
-//			
-//			FnameCancelTicket = new JTextField();
-//			FnameCancelTicket.setColumns(10);
-//			FnameCancelTicket.setBounds(148, 223, 116, 22);
-//			cancelTicketPanel.add(FnameCancelTicket);
-//			
-//			JLabel lblLastName_1 = new JLabel("Last Name");
-//			lblLastName_1.setBounds(12, 267, 110, 16);
-//			cancelTicketPanel.add(lblLastName_1);
-//			
-//			LnameCancelTicket = new JTextField();
-//			LnameCancelTicket.setColumns(10);
-//			LnameCancelTicket.setBounds(148, 264, 116, 22);
-//			cancelTicketPanel.add(LnameCancelTicket);
 		
 			setControllers();
 	
@@ -254,12 +184,13 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 	@Override
 	public void setStatus(boolean status) {
 		this.regUser=status;
-		newsItem.setVisible(true);
-		cancelPanel.populateFields();
+		newsItem.setVisible(status);
+		
 	}
 
 	@Override
 	public void setRegUserName(String userName) {
+		
 		this.userName=userName;
 		
 	}
@@ -295,6 +226,11 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 				c.show(panel, "News");
 			}
 				
+	}
+
+	@Override
+	public void fill() {
+		cancelPanel.populateFields();		
 	}
 		 
 	}

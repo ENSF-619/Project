@@ -46,9 +46,11 @@ public class LoginController implements ActionListener{
 			String user=userName.getText();
 			String pass=password.getText();
 			if(cc.getHub().getRegUsers().checkPassword(user, pass)) {
-				observer.setStatus(true);
+				
 				observer.setRegUserName(user);
 				observer.setRegPassword(pass);
+				observer.setStatus(true);
+				observer.fill();
 				JOptionPane.showMessageDialog(panel, "Login is valid");
 				c.show(panel, "Browse");
 			}

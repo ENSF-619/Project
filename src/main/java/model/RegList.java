@@ -24,7 +24,6 @@ public class RegList {
     	for (RegisteredUser registeredUser : registeredUsers) {
     		if(registeredUser.getUsername().equals(username) && 
     				registeredUser.getPassword().equals(password)) {
-    			System.err.println("YAAAA");
     			return true;
     		}
     	}
@@ -33,6 +32,7 @@ public class RegList {
 	
 	public RegisteredUser getUser(String username, String password) {
     	for (RegisteredUser registeredUser : registeredUsers) {
+    		System.err.println(username);
     		if(registeredUser.getUsername().equals(username) && 
     				registeredUser.getPassword().equals(password)) {
     			return registeredUser;

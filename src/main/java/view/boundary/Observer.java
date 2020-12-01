@@ -9,4 +9,5 @@ public interface Observer {
 	public String getUserName();
 	public void setRegPassword(String password);
 	public String getPassword();
+	public void fill();
 }

@@ -87,7 +87,7 @@ public class RefundController implements ActionListener{
 					else {
 						cc.getHub().getVouchers().addVoucher(new Voucher(random, (amount*0.85)));
 						cc.getHub().getShowtimes().getShowtimeById(showTime).getSeatById(position).setStatus(true);
-						JOptionPane.showMessageDialog(null, fName.getText()+" your Voucher ID: "+random+"\n You got deducted 15% due to cancelation fees\n Your credit of "+amount+" $");
+						JOptionPane.showMessageDialog(null, fName.getText()+" your Voucher ID: "+random+"\n You got deducted 15% due to cancelation fees\n Your credit of "+(amount*0.85)+" $");
 						c.show(panel, "Browse");
 					
 					}
@@ -104,7 +104,6 @@ public class RefundController implements ActionListener{
 		fName.setText(user.getFname());
 		lName.setText(user.getLname());
 		creditNum.setText(user.getCreditCard());
-		
 	}
 
 }
