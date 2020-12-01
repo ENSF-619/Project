@@ -1,4 +1,14 @@
 package model;
+/**
+ * ENSF 619 Group Project
+ * TheatreList stores theatre objects in a list and has functionality to 
+ * return all theatres and return specific theatres by name.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.util.ArrayList;
 

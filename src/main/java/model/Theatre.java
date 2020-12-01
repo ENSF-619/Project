@@ -1,4 +1,14 @@
 package model;
+/**
+ * ENSF 619 Group Project
+ * Theatre class represents theatres within our system.
+ * All theatres have a corresponding id, name and address.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 public class Theatre{
 

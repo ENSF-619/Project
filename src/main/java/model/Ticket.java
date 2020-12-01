@@ -1,5 +1,17 @@
 package model;
 
+/**
+ * ENSF 619 Group Project
+ * This class represents tickets that are generated following user payment.
+ * TicketId is used to track individual tickets. All tickets have a generated
+ * iissue date and the seat + showing connected to the ticket.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime; 
 import java.util.Random;

@@ -1,5 +1,15 @@
 package model;
 
+/**
+ * ENSF 619 Group Project
+ * This class holds movie information like name, rating and id.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 public class Movie{
 
     private int movieId;

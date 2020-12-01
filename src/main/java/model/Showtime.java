@@ -1,4 +1,16 @@
 package model;
+/**
+ * ENSF 619 Group Project
+ * This class represents the showtimes within our system. Showtimes have associated
+ * seat arrays, a theatre and a movie as well as an identifying
+ * id and a status to allow for visibility control
+ * between regualar users and registerd users
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.util.*;
 

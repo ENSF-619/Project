@@ -1,5 +1,15 @@
 package model;
-
+/**
+ * ENSF 619 Group Project
+ * RegList holds a list of all registered users in the system. Funcionality includes
+ * verification of username and password for login as well as add functionality 
+ * to allow for new registered users upon account creation.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 import java.util.ArrayList;
 
 public class RegList {

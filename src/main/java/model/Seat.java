@@ -1,4 +1,15 @@
 package model;
+/**
+ * ENSF 619 Group Project
+ * This clas represents seat objects which are kept by showtimes. 
+ * Seats have a position as well as a status to control
+ * which seats are available/unavailable based on ticket sales.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 public class Seat{
     private boolean status;

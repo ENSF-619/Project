@@ -1,5 +1,16 @@
 package model;
 
+/**
+ * ENSF 619 Group Project
+ * News class holds the news string that is output after
+ * Registered users choose to view cinema news.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 public class News {
 
     private String[] body = {"Fans outraged as upcoming feature Dune stops production",

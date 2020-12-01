@@ -1,5 +1,15 @@
 package model;
-
+/**
+ * ENSF 619 Group Project
+ * This class stores all generated tickets and has functionality to 
+ * check tickets by id, add + remove tickets from the system and sets
+ * the ticket's corresponding seats to unavailable after purchase.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 import java.util.ArrayList;
 
 public class TicketList {

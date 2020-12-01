@@ -1,5 +1,17 @@
 package model;
 
+/**
+ * ENSF 619 Group Project
+ * VoucherList stores a list of all vouchers saved in our system. Remove and
+ * add functionality is implemented here to handle creation and deletion of voucher
+ * objects
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.util.ArrayList;
 
 public class VoucherList {

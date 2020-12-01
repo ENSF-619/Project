@@ -1,5 +1,17 @@
 package model;
 
+/**
+ * ENSF 619 Group Project
+ * This class represents refund objects that are generated upon cancellation of ticket.
+ * Refunds have corresponding issue dates and payment issue to allow for reimbursement
+ * following ticket cancellation.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

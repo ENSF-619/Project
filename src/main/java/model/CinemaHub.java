@@ -1,4 +1,14 @@
 package model;
+/**
+ * ENSF 619 Group Project
+ * Cinema hub Collects needed objects so controllers can readily acces the classes
+ * in our system. All lists, User and News objects are store here.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 public class CinemaHub {
 	

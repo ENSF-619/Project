@@ -1,5 +1,17 @@
 package model;
 
+/**
+ * ENSF 619 Group Project
+ * Movie list holds all movie objects in our system.
+ * This class has functionality to return all movies, and find movies based on
+ * movie name segements.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 import java.util.ArrayList;
 
 public class MovieList {

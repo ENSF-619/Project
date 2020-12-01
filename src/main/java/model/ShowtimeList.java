@@ -1,4 +1,15 @@
 package model;
+/**
+ * ENSF 619 Group Project
+ * This class stores all showtime objects and has funcionality to return
+ * all showtimes, showtimes by movie, showtimes by theatre and restricted 
+ * showtimes only available to registered users.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.util.ArrayList;
 

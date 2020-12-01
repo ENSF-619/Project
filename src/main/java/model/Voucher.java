@@ -1,5 +1,15 @@
 package model;
-
+/**
+ * ENSF 619 Group Project
+ * Voucher class represents the voucher object created upon ticket cancellation.
+ * Voucher's are tracked by voucherId which is a randomly generated 4 digit integer and 
+ * is assigned an ammoiunt based on the tickets being cancelled.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
 
 import java.util.Random;
 

@@ -1,5 +1,16 @@
 package model;
 
+/**
+ * ENSF 619 Group Project
+ * This class holds User informationfor non-registered users accuired from the payment form.
+ * This class allows us to send ticket confirmation and process payment information.
+ * @author Ziad Chemali
+ * @author Evan Boerchers
+ * @author Myles Borthwick
+ * @author Chetana Bijoor
+ * @since Novemeber 2020
+ */
+
 public class User {
 
 	private String creditCard;
