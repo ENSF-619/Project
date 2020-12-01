@@ -55,6 +55,11 @@ public class CinemaHub {
 	public VoucherList getVouchers() {
 		return vouchers;
 	}
+
+	public News getNews() {
+		return news;
+	}
+	
 	
 
 }

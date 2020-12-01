@@ -34,6 +34,8 @@ import javax.swing.AbstractListModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.Canvas;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUIDesign {
 
@@ -118,6 +120,11 @@ public class GUIDesign {
 		UserMenu.add(cancelItem);
 		
 		JMenu newsItem = new JMenu("News");
+		newsItem.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		newsItem.setVisible(false);//TODO:: checks if login is a Regestered USER then it is enabled
 		
 		JMenu browseItem = new JMenu("Browse");
@@ -893,6 +900,15 @@ public class GUIDesign {
 		newsPanel.add(scrollPane_3, BorderLayout.CENTER);
 		
 		JList newsList = new JList();
+		newsList.setModel(new AbstractListModel() {
+			String[] values = new String[] {"Helll"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
 		scrollPane_3.setViewportView(newsList);
 		
 		JPanel cancelTicketPanel = new JPanel();

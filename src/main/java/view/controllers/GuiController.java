@@ -10,6 +10,7 @@ import java.awt.Insets;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ import javax.swing.event.ListSelectionListener;
 import controller.CinemaController;
 import view.boundary.Browser;
 import view.boundary.LoginForm;
+import view.boundary.NewsPanel;
 import view.boundary.RefundForm;
 import view.boundary.RegistrationForm;
 
@@ -54,6 +56,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 	private CardLayout c;
 	private RegistrationForm registerPanel;
 	private RefundForm cancelPanel;
+	private NewsPanel newsPanel;
 
 	public GuiController(CinemaController cc) {
 		 	frame = new JFrame();
@@ -104,18 +107,11 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 			cancelPanel =new RefundForm(cc, this);
 			panel.add(cancelPanel,"Refund");
 			
-			c.show(panel, "Browse");
-//			
-//			JPanel newsPanel = new JPanel();
-//			newsPanel.setBackground(SystemColor.inactiveCaption);
-//			panel.add(newsPanel, "name_300321879098400");
-//			newsPanel.setLayout(new BorderLayout(0, 0));
-//			
-//			JScrollPane scrollPane_3 = new JScrollPane();
-//			newsPanel.add(scrollPane_3, BorderLayout.CENTER);
-//			
-//			JList newsList = new JList();
-//			scrollPane_3.setViewportView(newsList);
+			
+			
+			newsPanel = new NewsPanel(cc);
+			panel.add(newsPanel, "News");
+			
 		
 			setControllers();
 	
@@ -123,39 +119,22 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 			registerItem.addActionListener(this);
 			cancelItem.addActionListener(this);
 			newsItem.addActionListener(this);
-		
-			browseItem.addMouseListener(new MouseListener() {
-				
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
+			c.show(panel, "Browse");
+			newsItem.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					if(e.getSource()==newsItem)
+					c.show(panel, "News");
+				}
+			});
+			browseItem.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if(e.getSource()==browseItem)
 					c.show(panel, "Browse");
 				}
-			});;
-			
+			});
+				
 	
 	}
 
@@ -222,9 +201,7 @@ public class GuiController implements view.boundary.Observer,ActionListener{
 			if(e.getSource()==cancelItem) {
 				c.show(panel, "Refund");
 			}
-			if(e.getSource()==newsItem) {
-				c.show(panel, "News");
-			}
+			
 				
 	}
 
