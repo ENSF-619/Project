@@ -141,15 +141,18 @@ public class DBController implements JDBCConnectionInfo {
 		}
 		return vouchers;
 	}
-//	public ArrayList<Seat> getSeat (int showTimeId) throws SQLException{
-//		ArrayList<Seat> seats=new ArrayList<Seat>();
-//		String sql=" SELECT  SeatNumber FROM " +TICKETTABLE +" WHERE ShowtimeId = ? ";
-//		PreparedStatement prep= jdbc_connection.prepareStatement(sql);
-//		prep.setInt(1, showTimeId);
-//		ResultSet result= prep.executeQuery();
-//		while ()
-//		
-//		
-//		
-//	}
+	//TODO : UPDATE queries 
+	//	
+	/*
+	 * Voucher add/remove/update
+	 * 
+	 * regUser : add/remove
+	 * 
+	 * 
+	 * Ticket : add/remove
+	 * 
+	 * 
+	 * 
+	 */
+
 }

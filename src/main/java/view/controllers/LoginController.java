@@ -43,17 +43,23 @@ public class LoginController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==loginBtn) {
-			System.err.println("HERE");
 			String user=userName.getText();
 			String pass=password.getText();
 			if(cc.getHub().getRegUsers().checkPassword(user, pass)) {
+				
+				observer.setRegUserName(user);
+				observer.setRegPassword(pass);
 				observer.setStatus(true);
+				observer.fill();
 				JOptionPane.showMessageDialog(panel, "Login is valid");
+				c.show(panel, "Browse");
 			}
-			else 
+			else {
+				observer.setStatus(false);
+			observer.setRegUserName("");
+			observer.setRegPassword("");
 				JOptionPane.showMessageDialog(panel, "Wrong username or password");
-		}
-		//TODO check with model and set the username/pasword in guicontroller and set status
+		}}
 	}
 
 }

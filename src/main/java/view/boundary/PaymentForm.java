@@ -37,6 +37,7 @@ private JButton purchaseBtn;
 private PaymentController controller;
 private JTextField theatreAddress;
 private JTextField total;
+private JTextField voucherID;
 
 public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, ArrayList<Seat> selectedSeats, CardLayout c, JPanel panel) {
 	setBackground(SystemColor.inactiveCaption);
@@ -76,7 +77,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	gbc_ticketID.gridx = 3;
 	gbc_ticketID.gridy = 1;
 	add(ticketID, gbc_ticketID);
-	ticketID.setColumns(10);
+	ticketID.setColumns(25);
 	
 	JLabel lblNewLabel_2 = new JLabel("Movie Name");
 	GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
@@ -89,7 +90,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	
 	movieName = new JTextField();
 	movieName.setEditable(false);
-	movieName.setColumns(10);
+	movieName.setColumns(25);
 	GridBagConstraints gbc_movieName = new GridBagConstraints();
 	gbc_movieName.anchor = GridBagConstraints.NORTHWEST;
 	gbc_movieName.insets = new Insets(0, 0, 5, 5);
@@ -108,7 +109,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	
 	theaterName = new JTextField();
 	theaterName.setEditable(false);
-	theaterName.setColumns(10);
+	theaterName.setColumns(25);
 	GridBagConstraints gbc_theaterName = new GridBagConstraints();
 	gbc_theaterName.anchor = GridBagConstraints.NORTHWEST;
 	gbc_theaterName.insets = new Insets(0, 0, 5, 5);
@@ -128,7 +129,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	
 	showTimeField = new JTextField();
 	showTimeField.setEditable(false);
-	showTimeField.setColumns(10);
+	showTimeField.setColumns(25);
 	GridBagConstraints gbc_showTime = new GridBagConstraints();
 	gbc_showTime.anchor = GridBagConstraints.NORTHWEST;
 	gbc_showTime.insets = new Insets(0, 0, 5, 5);
@@ -147,7 +148,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	
 	seatSelected = new JTextField();
 	seatSelected.setEditable(false);
-	seatSelected.setColumns(10);
+	seatSelected.setColumns(25);
 	GridBagConstraints gbc_seatSelected = new GridBagConstraints();
 	gbc_seatSelected.anchor = GridBagConstraints.NORTHWEST;
 	gbc_seatSelected.insets = new Insets(0, 0, 5, 5);
@@ -176,7 +177,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	add(lblFirstName, gbc_lblFirstName);
 	
 	firstName = new JTextField();
-	firstName.setColumns(10);
+	firstName.setColumns(25);
 	GridBagConstraints gbc_firstName = new GridBagConstraints();
 	gbc_firstName.anchor = GridBagConstraints.NORTHWEST;
 	gbc_firstName.insets = new Insets(0, 0, 5, 5);
@@ -194,7 +195,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	add(lblLastName, gbc_lblLastName);
 	
 	lastName = new JTextField();
-	lastName.setColumns(10);
+	lastName.setColumns(25);
 	GridBagConstraints gbc_lastName = new GridBagConstraints();
 	gbc_lastName.anchor = GridBagConstraints.NORTHWEST;
 	gbc_lastName.insets = new Insets(0, 0, 5, 5);
@@ -212,7 +213,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	add(lblEmail, gbc_lblEmail);
 	
 	Email = new JTextField();
-	Email.setColumns(10);
+	Email.setColumns(25);
 	GridBagConstraints gbc_Email = new GridBagConstraints();
 	gbc_Email.anchor = GridBagConstraints.NORTHWEST;
 	gbc_Email.insets = new Insets(0, 0, 5, 5);
@@ -220,7 +221,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	gbc_Email.gridy = 13;
 	add(Email, gbc_Email);
 	
-	JLabel lblCreditCardNumber = new JLabel("Credit Card Number");
+	JLabel lblCreditCardNumber = new JLabel("Card #");
 	GridBagConstraints gbc_lblCreditCardNumber = new GridBagConstraints();
 	gbc_lblCreditCardNumber.fill = GridBagConstraints.HORIZONTAL;
 	gbc_lblCreditCardNumber.insets = new Insets(0, 0, 5, 5);
@@ -230,7 +231,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	add(lblCreditCardNumber, gbc_lblCreditCardNumber);
 	
 	creditCardNum = new JTextField();
-	creditCardNum.setColumns(10);
+	creditCardNum.setColumns(25);
 	GridBagConstraints gbc_creditCardNum = new GridBagConstraints();
 	gbc_creditCardNum.anchor = GridBagConstraints.NORTHEAST;
 	gbc_creditCardNum.insets = new Insets(0, 0, 5, 5);
@@ -276,7 +277,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	add(lblCcv, gbc_lblCcv);
 	
 	CCV = new JTextField();
-	CCV.setColumns(10);
+	CCV.setColumns(3);
 	GridBagConstraints gbc_CCV = new GridBagConstraints();
 	gbc_CCV.fill = GridBagConstraints.HORIZONTAL;
 	gbc_CCV.insets = new Insets(0, 0, 5, 5);
@@ -286,7 +287,7 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	
 	theatreAddress = new JTextField();
 	theatreAddress.setEditable(false);
-	theatreAddress.setColumns(10);
+	theatreAddress.setColumns(25);
 	GridBagConstraints gbc_theatreAddress = new GridBagConstraints();
 	gbc_theatreAddress.anchor = GridBagConstraints.WEST;
 	gbc_theatreAddress.insets = new Insets(0, 0, 5, 5);
@@ -320,10 +321,26 @@ public PaymentForm(CinemaController cc, Observer observer, Showtime showTime, Ar
 	gbc_total.gridx = 3;
 	gbc_total.gridy = 8;
 	add(total, gbc_total);
+	JLabel lblVoucher = new JLabel("Voucher");
+	GridBagConstraints gbc_lblVoucher = new GridBagConstraints();
+	gbc_lblVoucher.insets = new Insets(0, 0, 5, 5);
+	gbc_lblVoucher.anchor = GridBagConstraints.EAST;
+	gbc_lblVoucher.gridx = 4;
+	gbc_lblVoucher.gridy = 8;
+	add(lblVoucher, gbc_lblVoucher);
+	
+	voucherID = new JTextField();
+	voucherID.setColumns(10);
+	GridBagConstraints gbc_voucherID = new GridBagConstraints();
+	gbc_voucherID.anchor = GridBagConstraints.WEST;
+	gbc_voucherID.insets = new Insets(0, 0, 5, 5);
+	gbc_voucherID.gridx = 5;
+	gbc_voucherID.gridy = 8;
+	add(voucherID, gbc_voucherID);
 	
 	controller=new PaymentController(cc,observer,showTime,selectedSeats,c,panel,ticketID
 			,movieName,theaterName,theatreAddress,showTimeField,seatSelected,firstName,lastName,Email,creditCardNum,monthComboBox,
-			yearComboBox,CCV,purchaseBtn,total);
+			yearComboBox,CCV,purchaseBtn,total,voucherID);
 	
 	purchaseBtn.addActionListener(controller);
 }

@@ -123,7 +123,7 @@ public class Ticket{
 
     @Override
     public String toString(){
-        String s =getTicketId()+", "+getMySeat()+", "+getPrice()+", "+getIssueDate();
+        String s =getTicketId()+", "+getPrice()+", "+getIssueDate()+","+showtimeId+","+seatNum;
         return s;
     }
 

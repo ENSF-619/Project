@@ -67,6 +67,9 @@ public class GUIDesign {
 	private JTable table;
 	private JTextField theatreAddress;
 	private JTextField total;
+	private JTextField voucherID;
+	private JTextField userNameField;
+	private JTextField passwordField;
 
 	/**
 	 * Launch the application.
@@ -315,7 +318,7 @@ public class GUIDesign {
 		GridBagLayout gbl_purchasePanel = new GridBagLayout();
 		gbl_purchasePanel.columnWidths = new int[]{56, 12, 3, 84, 57, 283, 195, 0};
 		gbl_purchasePanel.rowHeights = new int[]{36, 22, 22, 22, 44, 22, 44, 22, 41, 36, 22, 22, 33, 22, 39, 22, 22, 25, 0, 0, 0};
-		gbl_purchasePanel.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_purchasePanel.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_purchasePanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		purchasePanel.setLayout(gbl_purchasePanel);
 		
@@ -360,7 +363,7 @@ public class GUIDesign {
 		
 		movieName = new JTextField();
 		movieName.setEditable(false);
-		movieName.setColumns(10);
+		movieName.setColumns(20);
 		GridBagConstraints gbc_movieName = new GridBagConstraints();
 		gbc_movieName.anchor = GridBagConstraints.NORTHWEST;
 		gbc_movieName.insets = new Insets(0, 0, 5, 5);
@@ -461,6 +464,23 @@ public class GUIDesign {
 		gbc_total.gridx = 3;
 		gbc_total.gridy = 8;
 		purchasePanel.add(total, gbc_total);
+		
+		JLabel lblVoucher = new JLabel("Voucher");
+		GridBagConstraints gbc_lblVoucher = new GridBagConstraints();
+		gbc_lblVoucher.insets = new Insets(0, 0, 5, 5);
+		gbc_lblVoucher.anchor = GridBagConstraints.EAST;
+		gbc_lblVoucher.gridx = 4;
+		gbc_lblVoucher.gridy = 8;
+		purchasePanel.add(lblVoucher, gbc_lblVoucher);
+		
+		voucherID = new JTextField();
+		voucherID.setColumns(10);
+		GridBagConstraints gbc_voucherID = new GridBagConstraints();
+		gbc_voucherID.anchor = GridBagConstraints.WEST;
+		gbc_voucherID.insets = new Insets(0, 0, 5, 5);
+		gbc_voucherID.gridx = 5;
+		gbc_voucherID.gridy = 8;
+		purchasePanel.add(voucherID, gbc_voucherID);
 		
 		JLabel lblPaymentInfo = new JLabel("Payment Info");
 		lblPaymentInfo.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -632,7 +652,7 @@ public class GUIDesign {
 		GridBagLayout gbl_registerPanel = new GridBagLayout();
 		gbl_registerPanel.columnWidths = new int[]{56, 12, 0, 3, 0, 0, 140, 57, 283, 195, 0};
 		gbl_registerPanel.rowHeights = new int[]{36, 22, 22, 22, 44, 22, 44, 22, 41, 0, 36, 22, 0, 22, 33, 22, 39, 22, 22, 25, 0, 0, 0};
-		gbl_registerPanel.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_registerPanel.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_registerPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		registerPanel.setLayout(gbl_registerPanel);
 		
@@ -664,6 +684,23 @@ public class GUIDesign {
 		gbc_fName.gridy = 1;
 		registerPanel.add(fName, gbc_fName);
 		
+		JLabel lblUsername = new JLabel("UserName");
+		GridBagConstraints gbc_lblUsername = new GridBagConstraints();
+		gbc_lblUsername.anchor = GridBagConstraints.EAST;
+		gbc_lblUsername.insets = new Insets(0, 0, 5, 5);
+		gbc_lblUsername.gridx = 4;
+		gbc_lblUsername.gridy = 1;
+		registerPanel.add(lblUsername, gbc_lblUsername);
+		
+		userNameField = new JTextField();
+		userNameField.setColumns(10);
+		GridBagConstraints gbc_userNameField = new GridBagConstraints();
+		gbc_userNameField.insets = new Insets(0, 0, 5, 5);
+		gbc_userNameField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_userNameField.gridx = 5;
+		gbc_userNameField.gridy = 1;
+		registerPanel.add(userNameField, gbc_userNameField);
+		
 		JLabel label_8 = new JLabel("Last Name");
 		GridBagConstraints gbc_label_8 = new GridBagConstraints();
 		gbc_label_8.fill = GridBagConstraints.HORIZONTAL;
@@ -681,6 +718,23 @@ public class GUIDesign {
 		gbc_lName.gridx = 1;
 		gbc_lName.gridy = 2;
 		registerPanel.add(lName, gbc_lName);
+		
+		JLabel lblPassword_1 = new JLabel("Password");
+		GridBagConstraints gbc_lblPassword_1 = new GridBagConstraints();
+		gbc_lblPassword_1.anchor = GridBagConstraints.EAST;
+		gbc_lblPassword_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPassword_1.gridx = 4;
+		gbc_lblPassword_1.gridy = 2;
+		registerPanel.add(lblPassword_1, gbc_lblPassword_1);
+		
+		passwordField = new JTextField();
+		passwordField.setColumns(10);
+		GridBagConstraints gbc_passwordField = new GridBagConstraints();
+		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
+		gbc_passwordField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_passwordField.gridx = 5;
+		gbc_passwordField.gridy = 2;
+		registerPanel.add(passwordField, gbc_passwordField);
 		
 		JLabel label_9 = new JLabel("Email");
 		GridBagConstraints gbc_label_9 = new GridBagConstraints();
@@ -702,6 +756,7 @@ public class GUIDesign {
 		
 		JLabel lblAddress = new JLabel("Address");
 		GridBagConstraints gbc_lblAddress = new GridBagConstraints();
+		gbc_lblAddress.anchor = GridBagConstraints.WEST;
 		gbc_lblAddress.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAddress.gridx = 0;
 		gbc_lblAddress.gridy = 4;
@@ -718,7 +773,7 @@ public class GUIDesign {
 		
 		JLabel lblPostal = new JLabel("Postal");
 		GridBagConstraints gbc_lblPostal = new GridBagConstraints();
-		gbc_lblPostal.anchor = GridBagConstraints.EAST;
+		gbc_lblPostal.anchor = GridBagConstraints.WEST;
 		gbc_lblPostal.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPostal.gridx = 0;
 		gbc_lblPostal.gridy = 5;
@@ -735,7 +790,7 @@ public class GUIDesign {
 		
 		JLabel PhoneNu = new JLabel("Phone Number");
 		GridBagConstraints gbc_PhoneNu = new GridBagConstraints();
-		gbc_PhoneNu.anchor = GridBagConstraints.EAST;
+		gbc_PhoneNu.anchor = GridBagConstraints.WEST;
 		gbc_PhoneNu.insets = new Insets(0, 0, 5, 5);
 		gbc_PhoneNu.gridx = 0;
 		gbc_PhoneNu.gridy = 6;
@@ -915,8 +970,8 @@ public class GUIDesign {
 		panel.add(home, "name_510069479194200");
 		home.setLayout(null);
 		
-		Canvas canvas = new Canvas();
-		canvas.setBounds(0, 0, 307, 392);
-		home.add(canvas);
+		JLabel lblNewLabel_8 = new JLabel("New label");
+		lblNewLabel_8.setBounds(505, 130, 56, 16);
+		home.add(lblNewLabel_8);
 	}
 }
