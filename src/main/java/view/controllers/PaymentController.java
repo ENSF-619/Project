@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.Timestamp;
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
@@ -119,25 +121,28 @@ public class PaymentController implements ActionListener {
 						|| credit.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Fill in information");
 				} else {
+					DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+				     LocalDateTime now = LocalDateTime.now();
 				ArrayList<Integer> tempStorage=new ArrayList<Integer>();
 					for (int i = 0; i < selectedSeats.size(); i++) {
 						ticketNum =(int) (Math.random()*(100000));
 						tempStorage.add(ticketNum);
 						Ticket ticket = new Ticket(ticketNum, selectedSeats.get(i).getPrice(),
-								new java.sql.Timestamp(System.currentTimeMillis())  + "", showTime.getShowtimeId(),
+								now.format(dtf), showTime.getShowtimeId(),
 								selectedSeats.get(i).getPosition());
 
 						cc.getHub().getTickets().addTicket(ticket);
 
 						showTime.getSeatById(selectedSeats.get(i).getPosition()).setStatus(false);
 					}
-					System.err.println(cc.getHub().getTickets().toString());
 					JOptionPane.showMessageDialog(null, "Your card has been charged: "+total.getText()+" $\nConfirmation has been sent to " + email.getText()+"\nYour Tickets are: "+tempStorage.toString());
 					c.show(panel, "Browse");
 				}
 			} else {
 				int id = Integer.parseInt(voucherID.getText());
 				Voucher temp = cc.getHub().getVouchers().getVoucher(id);
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			     LocalDateTime now = LocalDateTime.now();
 				if (temp == null) {
 					voucherID.setText("");
 					JOptionPane.showMessageDialog(null, "Voucher not valid");
@@ -152,7 +157,7 @@ public class PaymentController implements ActionListener {
 							ticketNum = (int) (Math.random()*(100000));
 							tempStorage.add(ticketNum);
 							Ticket ticket = new Ticket(ticketNum, selectedSeats.get(i).getPrice(),
-									new java.sql.Timestamp(System.currentTimeMillis())  + "", showTime.getShowtimeId(),
+									now.format(dtf), showTime.getShowtimeId(),
 									selectedSeats.get(i).getPosition());
 
 							cc.getHub().getTickets().addTicket(ticket);
@@ -169,8 +174,9 @@ public class PaymentController implements ActionListener {
 						for (int i = 0; i < selectedSeats.size(); i++) {
 							ticketNum = (int) (Math.random()*(100000));
 							tempStorage.add(ticketNum);
+						    
 							Ticket ticket = new Ticket(ticketNum, selectedSeats.get(i).getPrice(),
-									new java.sql.Timestamp(System.currentTimeMillis()) + "", showTime.getShowtimeId(),
+									now.format(dtf), showTime.getShowtimeId(),
 									selectedSeats.get(i).getPosition());
 
 							cc.getHub().getTickets().addTicket(ticket);

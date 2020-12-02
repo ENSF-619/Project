@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -16,6 +18,8 @@ import javax.swing.JTextField;
 
 import controller.CinemaController;
 import model.RegisteredUser;
+import model.Seat;
+import model.Showtime;
 import model.Ticket;
 import model.Voucher;
 import view.boundary.Observer;
@@ -73,11 +77,17 @@ public class RefundController implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Ticket not found");
 				} else {
 					// ticket info
+					 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+					    
+
+					 LocalDateTime now = LocalDateTime.now();
+					String formattedDate = now.format(dtf);
+					
 					int random = (int) (Math.random() * 100000);
 					double amount = ticket.getPrice();
 					int showTime = ticket.getShowtimeId();
-					String date = ticket.getIssueDate();
-					SimpleDateFormat fort = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
+					String date = cc.getHub().getShowtimes().getShowtimeById(showTime).getdateTime();
+					SimpleDateFormat fort = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					Date d1 = null;
 					try {
 						d1 = fort.parse(date);
@@ -85,10 +95,12 @@ public class RefundController implements ActionListener {
 					}
 					Date d2 = null;
 					try {
-						d2 = fort.parse(new java.sql.Timestamp(System.currentTimeMillis()) + "");
+						d2 = fort.parse(formattedDate);
+						
 					} catch (ParseException e1) {
 					}
-					double hours = (d2.getTime() - d1.getTime()) / 1000 / 3600;
+					double hours = (d1.getTime() - d2.getTime()) / 1000 / 3600;
+					System.err.println(hours+ " D1 "+ d1+" D2 "+d2);
 					String position = ticket.getSeatNum();
 					if (observer.loginStatus()) {
 						cc.getHub().getVouchers().addVoucher(new Voucher(random, amount));
@@ -99,7 +111,8 @@ public class RefundController implements ActionListener {
 						c.show(panel, "Browse");
 
 					} else {
-						if (hours < 72) {
+						if (hours > 72) {
+							
 							DecimalFormat formatter = new DecimalFormat();
 							formatter.setMaximumFractionDigits(2);
 							cc.getHub().getVouchers().addVoucher(new Voucher(random, (amount * 0.85)));
