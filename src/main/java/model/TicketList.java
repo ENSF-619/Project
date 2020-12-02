@@ -1,27 +1,57 @@
 package model;
+import java.util.ArrayList;
 /**
  * ENSF 619 Group Project
- * This class stores all generated tickets and has functionality to 
+ * The class `TicketList` stores all generated tickets and has functionality to 
  * check tickets by id, add + remove tickets from the system and sets
  * the ticket's corresponding seats to unavailable after purchase.
+ * 
  * @author Ziad Chemali
  * @author Evan Boerchers
  * @author Myles Borthwick
  * @author Chetana Bijoor
  * @since Novemeber 2020
  */
-import java.util.ArrayList;
-
 public class TicketList {
+	/**
+	 * The instance variable `tickets` of type ArrayList Ticket
+	 */
 	private ArrayList<Ticket> tickets;
+	/**
+	 * The instance variable `showtimes` of type ArrayList Showtime
+	 */
 	private ArrayList<Showtime> showtimes;
-
+	
+	/**
+	 * The constructor initializes the values of the instance variables.
+	 * @param tlist of type ArrayList Ticket
+	 * @param arrayList of type ArrayList Showtime
+	 */
 	public TicketList(ArrayList<Ticket> tlist, ArrayList<Showtime> arrayList){
 		setTickets(tlist);
 		this.showtimes=arrayList;
 		setUnavailableSeats();
 	}
-
+	
+	/**
+	 * The getter method for instance variable `tickets`
+	 * @return `tickets` of type ArrayList Ticket
+	 */
+	public ArrayList<Ticket> getTickets() {
+		return this.tickets;
+	}
+	
+	/**
+	 * The setter method for instance variable `tickets`
+	 * @param tickets of type ArrayList Ticket
+	 */
+	public void setTickets(ArrayList<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+	
+	/**
+	 * The method `setUnavailableSeats()` sets the status of seats to unavailable.
+	 */
 	private void setUnavailableSeats() {
 		for (Ticket ticket : tickets) {
 			for(Showtime showtime: showtimes ) {
@@ -37,16 +67,12 @@ public class TicketList {
 		}
 		
 	}
-
-	public ArrayList<Ticket> getTickets() {
-		return this.tickets;
-	}
-
-	public void setTickets(ArrayList<Ticket> tickets) {
-		this.tickets = tickets;
-	}
-
 	
+	/**
+	 * The method `getTicket()` returns the ticket based on specified id.
+	 * @param id - ID of the ticket
+	 * @return - ticket based on specified id.
+	 */
 	public Ticket getTicket(int id) {
 		for(Ticket ticket : tickets) {
 			if(ticket.getTicketId() == id) {
@@ -55,7 +81,12 @@ public class TicketList {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * The method `checkTicket()` compares the ID of tickets.
+	 * @param ticket of type Ticket
+	 * @return True if Ticket id is found, else it returns false.
+	 */
 	public boolean checkTicket(Ticket ticket){
 		for(Ticket t: tickets){
 			if(t.getTicketId() == ticket.getTicketId()){
