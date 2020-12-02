@@ -1,26 +1,44 @@
 package model;
+import java.util.ArrayList;
 /**
  * ENSF 619 Group Project
- * This class stores all showtime objects and has funcionality to return
+ * The class `ShowtimeList` stores all showtime objects and has functionality to return
  * all showtimes, showtimes by movie, showtimes by theatre and restricted 
  * showtimes only available to registered users.
+ * 
  * @author Ziad Chemali
  * @author Evan Boerchers
  * @author Myles Borthwick
  * @author Chetana Bijoor
  * @since Novemeber 2020
  */
-
-import java.util.ArrayList;
-
 public class ShowtimeList {
-
+	/**
+	 * The instance variable `showtimes` of type ArrayList Showtime
+	 */
 	private ArrayList<Showtime> showtimes;
-
+	
+	/**
+	 * The constructor initializes the value of the instance variable.
+	 * @param s - of type ArrayList Showtime
+	 */
 	public ShowtimeList(ArrayList<Showtime> s){
 		this.showtimes = s;
 	}
+	
+	/**
+	 * The getter method for instance variable `showtimes` 
+	 * @return `showtimes` of type ArrayList Showtime
+	 */
+	public ArrayList<Showtime> getAllShowtimes() {
+		return showtimes;
+	}
 
+	/**
+	 * The method `getShowtimeById()` returns Showtime for a given show time ID
+	 * @param showId - Show time ID
+	 * @return - Showtime for the given ID.
+	 */
 	public Showtime getShowtimeById(int showId) {
 		for (Showtime showtime : showtimes) {
 			if (showtime.getShowtimeId()==showId) {
@@ -29,9 +47,13 @@ public class ShowtimeList {
 		}
 		return null;
 	}
-
 	
-
+	/**
+	 * The method `getUnrestrictedShowtimesByTheatre()` returns unrestricted showtimes 
+	 * for a given theatre.
+	 * @param theatre - of type Theatre
+	 * @return - unrestricted showtimes for a given theatre.
+	 */
 	public ArrayList<Showtime> getUnrestrictedShowtimesByTheatre(Theatre theatre) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
@@ -41,7 +63,13 @@ public class ShowtimeList {
 		}
 		return temp;
 	}
-
+	
+	/**
+	 * The method `getUnrestrictedShowtimesByMovie()` returns unrestricted showtimes 
+	 * for a given movie.
+	 * @param movie of type Movie
+	 * @return - unrestricted showtimes for a given movie.
+	 */
 	public ArrayList<Showtime> getUnrestrictedShowtimesByMovie(Movie movie) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
@@ -51,20 +79,32 @@ public class ShowtimeList {
 		}
 		return temp;
 	}
-
+	
+	/**
+	 * The method `setTheatres()` sets theatre for the showtime
+	 * @param theatres of type `TheatreList`
+	 */
 	public void setTheatres(TheatreList theatres) {
 		for (Showtime showtime : showtimes) {
 			showtime.setTheatre(theatres.getTheatre(showtime.getTheatreId()));
 		}
 	}
-
+	
+	/**
+	 * The method `setMovies()` sets movie for the showtime
+	 * @param movies of type `MovieList`
+	 */
 	public void setMovies(MovieList movies) {
 		for (Showtime showtime : showtimes) {
 			showtime.setMovie(movies.getMovie(showtime.getMovieId()));
 		}
 	}
 
-
+	/**
+	 * The method `getAllShowtimesByTheatre()` returns the showtimes for a given theatre.
+	 * @param theatre of type `Theatre`
+	 * @return - showtimes for a given theatre
+	 */
 	public ArrayList<Showtime> getAllShowtimesByTheatre(Theatre theatre) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
@@ -76,9 +116,10 @@ public class ShowtimeList {
 	}
 	
 	/**
-	 * Finds all Movies in a specific theatre
-	 * @param theatreID
-	 * @return
+	 * The method `getAllMovieByTheatre()` finds all Movies in a specific theatre.
+	 * @param theatreID of type `int`
+	 * @param regUser of type `boolean`
+	 * @return - Movies in a specific theatre.
 	 */
 	public ArrayList<Movie> getAllMovieByTheatre(int theatreID, boolean regUser){
 		ArrayList<Movie> temp= new ArrayList<Movie>();
@@ -95,12 +136,14 @@ public class ShowtimeList {
 		}
 		return temp;
 		}
+	
 	/**
-	 * Finds all theaters that has a specific movie
-	 * @param movieID
-	 * @return
+	 * The method `getAllTheatrsByMovie()` finds all theaters that has a specific movie.
+	 * @param movieID - ID of the movie 
+	 * @param regUser of type `boolean`
+	 * @return - theaters that has a specific movie.
 	 */
-	public ArrayList<Theatre> getAllTheatrsByMovie(int movieID,boolean regUser){
+	public ArrayList<Theatre> getAllTheatrsByMovie(int movieID, boolean regUser){
 		ArrayList<Theatre> temp= new ArrayList<Theatre>();
 		if(regUser) {
 		for (Showtime showtime : showtimes){
@@ -116,13 +159,14 @@ public class ShowtimeList {
 			
 		return temp;
 		}
+	
 	/**
-	 * Finds all showtimes for specific movie and theatrre
-	 * @param theatrID
-	 * @param movieID
-	 * @return
+	 * The method `getAllShowtimesByTheatreAndMovie()` finds all showtimes for specific movie and theatre.
+	 * @param theatrID - ID of the theatre
+	 * @param movieID - ID of the movie
+	 * @return - showtimes for specific movie and theatre
 	 */
-	public ArrayList<Showtime> getAllShowtimesByTheatreAndMovie(int theatrID,int movieID) {
+	public ArrayList<Showtime> getAllShowtimesByTheatreAndMovie(int theatrID, int movieID) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
 			if (showtime.getTheatre().getTheatreId()==theatrID && showtime.getMovie().getMovieId()==movieID) {
@@ -131,7 +175,12 @@ public class ShowtimeList {
 		}
 		return temp;
 	}
-
+	
+	/**
+	 * The method `getAllShowtimesByMovie()` finds all showtimes for a specific movie.
+	 * @param movie of type Movie
+	 * @return - showtimes for a specific movie
+	 */
 	public ArrayList<Showtime> getAllShowtimesByMovie(Movie movie) {
 		ArrayList<Showtime> temp = new ArrayList<Showtime>();
 		for (Showtime showtime : showtimes) {
@@ -141,10 +190,4 @@ public class ShowtimeList {
 		}
 		return temp;
 	}
-	public ArrayList<Showtime>  getAllShowtimes() {
-		return showtimes;
-	}
-
-
-
 }
