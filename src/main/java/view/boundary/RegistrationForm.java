@@ -231,6 +231,7 @@ public class RegistrationForm extends JPanel{
 		CCV = new JTextField();
 		CCV.setColumns(3);
 		GridBagConstraints gbc_textField_9 = new GridBagConstraints();
+		gbc_textField_9.fill=GridBagConstraints.HORIZONTAL;
 		gbc_textField_9.anchor = GridBagConstraints.WEST;
 		gbc_textField_9.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_9.gridx = 4;

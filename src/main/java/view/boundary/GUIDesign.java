@@ -887,7 +887,7 @@ public class GUIDesign {
 		textField_9 = new JTextField();
 		textField_9.setColumns(3);
 		GridBagConstraints gbc_textField_9 = new GridBagConstraints();
-		gbc_textField_9.anchor = GridBagConstraints.WEST;
+		gbc_textField_9.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_9.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_9.gridx = 4;
 		gbc_textField_9.gridy = 11;
