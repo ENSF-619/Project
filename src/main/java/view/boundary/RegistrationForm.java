@@ -65,7 +65,7 @@ public class RegistrationForm extends JPanel{
 		
 		JLabel label_7 = new JLabel("First Name");
 		GridBagConstraints gbc_label_7 = new GridBagConstraints();
-		gbc_label_7.fill = GridBagConstraints.HORIZONTAL;
+		gbc_label_7.anchor=GridBagConstraints.EAST;
 		gbc_label_7.insets = new Insets(0, 0, 5, 5);
 		gbc_label_7.gridx = 0;
 		gbc_label_7.gridy = 1;
@@ -83,7 +83,7 @@ public class RegistrationForm extends JPanel{
 		
 		JLabel label_8 = new JLabel("Last Name");
 		GridBagConstraints gbc_label_8 = new GridBagConstraints();
-		gbc_label_8.fill = GridBagConstraints.HORIZONTAL;
+		gbc_label_8.anchor=GridBagConstraints.EAST;
 		gbc_label_8.insets = new Insets(0, 0, 5, 5);
 		gbc_label_8.gridx = 0;
 		gbc_label_8.gridy = 2;
@@ -101,7 +101,7 @@ public class RegistrationForm extends JPanel{
 		
 		JLabel label_9 = new JLabel("Email");
 		GridBagConstraints gbc_label_9 = new GridBagConstraints();
-		gbc_label_9.fill = GridBagConstraints.HORIZONTAL;
+		gbc_label_9.anchor=GridBagConstraints.EAST;
 		gbc_label_9.insets = new Insets(0, 0, 5, 5);
 		gbc_label_9.gridx = 0;
 		gbc_label_9.gridy = 3;
@@ -119,6 +119,7 @@ public class RegistrationForm extends JPanel{
 		
 		JLabel lblAddress = new JLabel("Address");
 		GridBagConstraints gbc_lblAddress = new GridBagConstraints();
+		gbc_lblAddress.anchor=GridBagConstraints.EAST;
 		gbc_lblAddress.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAddress.gridx = 0;
 		gbc_lblAddress.gridy = 4;
