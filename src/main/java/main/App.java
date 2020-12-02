@@ -40,13 +40,6 @@ public class App {
 		CinemaHub cinema = new CinemaHub(movies, theatres, showtimes, tickets, regUsers, vouchers);
 		CinemaController ctr=new CinemaController(cinema);
 		//CREATING GUI
-//		SimpleDateFormat fort=new SimpleDateFormat("yyyy-MM-DD HH:mm:ss"); 
 		GuiController gui =new GuiController(ctr);
-//		Ticket t=ctr.getHub().getTickets().getTicket(10001);
-//		Date d=fort.parse(t.getIssueDate());
-//		Date d2=fort.parse(new java.sql.Timestamp(System.currentTimeMillis())+"");
-//		double h1=(d.getTime()-d2.getTime())/1000/3600;
-//		System.err.println(d+"   \n"+d2+"\n"+h1);
-//	}
 
 }}
