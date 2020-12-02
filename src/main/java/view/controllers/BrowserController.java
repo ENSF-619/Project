@@ -149,7 +149,7 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 		try {
 			if(route==0) {
 		
-			movieID= (int) table.getValueAt(table.getSelectedRow(), 0);
+			movieID= (Integer) table.getValueAt(table.getSelectedRow(), 0);
 			ArrayList<Theatre> theatreList=cc.getHub().getShowtimes().getAllTheatrsByMovie(movieID,observer.loginStatus());
 			model=new DefaultTableModel();
 			table = new JTable(model);
@@ -161,7 +161,7 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 				
 				@Override
 				public void valueChanged(ListSelectionEvent e) {
-					theatrID= (int) table.getValueAt(table.getSelectedRow(), 0);
+					theatrID= (Integer) table.getValueAt(table.getSelectedRow(), 0);
 					ArrayList<Showtime> showTimeList=cc.getHub().getShowtimes().getAllShowtimesByTheatreAndMovie(theatrID, movieID);
 					model=new DefaultTableModel();
 					table = new JTable(model);
@@ -172,7 +172,7 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 						
 						@Override
 						public void valueChanged(ListSelectionEvent e) {
-							showtimeID=(int) table.getValueAt(table.getSelectedRow(), 0);
+							showtimeID=(Integer) table.getValueAt(table.getSelectedRow(), 0);
 							Showtime temp=cc.getHub().getShowtimes().getShowtimeById(showtimeID);
 							SeatMap map =new SeatMap(cc, observer,temp,c,panel);
 							panel.add(map,"SeatMap");
@@ -186,7 +186,7 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 				
 				
 			if(route==1) {
-				theatrID= (int) table.getValueAt(table.getSelectedRow(), 0);
+				theatrID= (Integer) table.getValueAt(table.getSelectedRow(), 0);
 				ArrayList<Movie> movieList=cc.getHub().getShowtimes().getAllMovieByTheatre(theatrID,observer.loginStatus());
 				model=new DefaultTableModel();
 				table = new JTable(model);
@@ -198,7 +198,7 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 					
 					@Override
 					public void valueChanged(ListSelectionEvent e) {
-						movieID= (int) table.getValueAt(table.getSelectedRow(), 0);
+						movieID= (Integer) table.getValueAt(table.getSelectedRow(), 0);
 						ArrayList<Showtime> showTimeList=cc.getHub().getShowtimes().getAllShowtimesByTheatreAndMovie(theatrID, movieID);
 						model=new DefaultTableModel();
 						table = new JTable(model);
@@ -209,7 +209,7 @@ public void populateShowTimeTable(ArrayList<Showtime> showTime) {
 							
 							@Override
 							public void valueChanged(ListSelectionEvent e) {
-								showtimeID=(int) table.getValueAt(table.getSelectedRow(), 0);
+								showtimeID=(Integer) table.getValueAt(table.getSelectedRow(), 0);
 								Showtime temp=cc.getHub().getShowtimes().getShowtimeById(showtimeID);
 								SeatMap map =new SeatMap(cc, observer,temp,c,panel);
 								panel.add(map,"SeatMap");
